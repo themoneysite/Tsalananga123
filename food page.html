@@ -358,7 +358,13 @@
 
     <script>
         // Function to send the order
-        function sendOrder() {
+function sendOrder() {
+    const contactInfo = document.getElementById('contact-info').value;
+    if (contactInfo.trim() === "") {
+        alert('Please enter your contact information (phone number or email) before submitting the order.');
+        return;
+    }
+    function sendOrder() {
     // Gather cart items (you'll need to implement this part)
     var cartItems = getCartItems();
 
