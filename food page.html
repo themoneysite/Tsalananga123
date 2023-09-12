@@ -332,47 +332,53 @@
         </div>
     </div>
     <div id="cart-tab" class="tab">
-        
         <div class="tab-content">
-<form
+            <h2>Shopping Cart</h2>
+            <div class="content-outline">
+                <form
   action="https://formspree.io/f/xwkdqede"
   method="POST"
-><div id="cart-tab" class="tab">
-    <div class="tab-content">
-        <h2>Shopping Cart</h2>
-        <div class="content-outline">
-            <div id="cart-items"></div>
-            <div class="total">Total: <span id="cart-total">$0.00</span></div>
-
-            <!-- Add the contact information form -->
-            <form
-                action="https://formspree.io/f/xwkdqede"
-                method="POST"
-                id="order-form"
-            >
-                <label for="contact-info">Enter your phone number or email:</label>
-                <input type="text" id="contact-info" name="contact-info" required>
-
-                <!-- Add hidden input fields for cart items -->
-                <input type="hidden" id="cart-items-input" name="cart-items">
-                <input type="hidden" id="cart-total-input" name="cart-total">
-
-                <button class="send-order-button" onclick="prepareAndSendOrder()">Submit Order</button>
-            </form>
+>
+                <div id="cart-items"></div>
+                <div class="total">Total: <span id="cart-total">$0.00</span></div>
+                
+                <!-- Add the contact information form -->
+                
+>
+                <form id="contact-form" class="contact-form">
+                    <label for="contact-info">Enter your phone number or email:</label>
+                    <input type="text" id="contact-info" name="contact-info" required>
+                    <button class="send-order-button" onclick="sendOrder()">Submit Order</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 
 
     <script>
         // Function to send the order
-function sendOrder() {
-    const contactInfo = document.getElementById('contact-info').value;
-    if (contactInfo.trim() === "") {
-        alert('Please enter your contact information (phone number or email) before submitting the order.');
-        return;
-    }
+        function sendOrder() {
+    // Gather cart items (you'll need to implement this part)
+    var cartItems = getCartItems();
+
+    // Get the contact information from the input field
+    var contactInfo = document.getElementById("contact-info").value;
+
+    // Add the cart items data to a hidden input field in the form
+    var cartItemsField = document.createElement("input");
+    cartItemsField.setAttribute("type", "hidden");
+    cartItemsField.setAttribute("name", "cart-items");
+    cartItemsField.setAttribute("value", JSON.stringify(cartItems));
+
+    // Append the hidden input field to the form
+    var form = document.getElementById("contact-form");
+    form.appendChild(cartItemsField);
+
+    // Submit the form
+    form.submit();
+}
+
 
     // Here, you can handle the order submission, e.g., send the order details and contactInfo to a server.
     // Replace this with your actual order submission logic.
@@ -392,18 +398,7 @@ function sendOrder() {
             });
             document.getElementById(tabId).style.display = 'block';
         }
-function prepareAndSendOrder() {
-    // Get the cart items and total from your JavaScript/cart logic
-    var cartItems = /* Logic to get cart items as a string or array */;
-    var cartTotal = /* Logic to get cart total as a string or number */;
 
-    // Set the values of the hidden input fields
-    document.getElementById("cart-items-input").value = JSON.stringify(cartItems);
-    document.getElementById("cart-total-input").value = cartTotal;
-
-    // Submit the form
-    document.getElementById("order-form").submit();
-}
         // Function to add an item to the cart
         function addToCart(itemName, itemPrice) {
             const item = {
