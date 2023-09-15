@@ -327,20 +327,23 @@
 <!-- Add this button inside your cart tab's content -->
 <button class="copy-cart-button" onclick="copyCartItems()">Copy Cart Items</button>
 
-                <!-- Contact information form -->
+   <!-- Contact information form -->
                 <form
   action="https://formspree.io/f/xwkdqede"
   method="POST"
 >
-                <form id="contact-form" class="contact-form">
+<form id="contact-form" class="contact-form">
     <label for="contact-info">Enter your phone number or email:</label>
     <input type="text" id="contact-info" name="contact-info" required>
-    
-    <!-- Textarea for cart items -->
+
     <label for="cart-items-text">Copy and Paste Your Cart Items:</label>
-    <textarea id="cart-items-text" rows="4" cols="50"></textarea>
-</form>
+    <textarea id="cart-items-text" name="cart-items-text" rows="4" cols="50"></textarea>
+
+    <!-- Add this button inside your cart tab's content -->
+   
+
     <button class="send-order-button" onclick="sendOrder()">Submit Order</button>
+</form>
 
 
             </div>
