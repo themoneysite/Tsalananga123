@@ -119,66 +119,124 @@
         }
 
         /* Styles for the shopping cart tab */
-        #cart-tab .tab-content {
-            background-color: white;
-            padding: 20px;
-            border: 2px solid #000;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            max-width: 500px; /* Increase the max-width for a larger cart */
-            margin: 0 auto;
-            text-align: left;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
+        /* Styles for the shopping cart tab */
+#cart-tab .tab-content {
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
 
-        #cart-items {
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
+#cart-tab h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
 
-        .cart-item {
-            display: flex;
-            flex-direction: column; /* Display meal name above product quantity */
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
+#cart-items {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
 
-        .item-name {
-            word-wrap: break-word; /* Wrap long text in item name */
-        }
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 18px;
+    align-items: center;
+}
 
-        .item-quantity {
-            text-align: center;
-        }
+.item-name {
+    flex-grow: 1;
+    word-wrap: break-word;
+}
 
-        .item-price {
-            text-align: right;
-        }
+.item-quantity {
+    font-size: 16px;
+    margin: 0 10px;
+}
 
-        .total {
-            font-weight: bold;
-            font-size: 18px;
-            margin-top: 20px;
-            text-align: right;
-        }
+.item-price {
+    text-align: right;
+    font-weight: bold;
+    flex-basis: 80px;
+    color: #ff6600;
+}
 
-        .send-order-button {
-            background-color: #ff6600;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 20px;
-            float: right;
-        }
+.total {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: right;
+    color: #333;
+}
 
-        .send-order-button:hover {
-            background-color: #cc5500;
-        }
+.copy-cart-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    float: right;
+    transition: background-color 0.3s ease;
+}
+
+.copy-cart-button:hover {
+    background-color: #555;
+}
+
+.contact-form {
+    margin-top: 20px;
+}
+
+.contact-form label {
+    font-size: 18px;
+    color: #333;
+}
+
+#contact-info {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+#cart-items-text {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.send-order-button {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    float: right;
+    font-size: 18px;
+}
+
+.send-order-button:hover {
+    background-color: #cc5500;
+}
+
 
     </style>
 </head>
@@ -267,12 +325,13 @@
                 <div class="total">Total: <span id="cart-total">$0.00</span></div>
                 
 <!-- Add this button inside your cart tab's content -->
-<button class="copy-cart-b<form
-  action="https://formspree.io/f/xwkdqede"
-  method="POST"
->utton" onclick="copyCartItems()">Copy Cart Items</button>
+<button class="copy-cart-button" onclick="copyCartItems()">Copy Cart Items</button>
 
                 <!-- Contact information form -->
+                <form
+  action="https://formspree.io/f/xwkdqede"
+  method="POST"
+>
                 <form id="contact-form" class="contact-form">
     <label for="contact-info">Enter your phone number or email:</label>
     <input type="text" id="contact-info" name="contact-info" required>
