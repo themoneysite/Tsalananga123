@@ -6,7 +6,8 @@
     <title>Tabbed Page</title>
     <style>
         /* Common styles for item containers */
-        .item-container {
+/* Common styles for item containers */
+.item-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,6 +34,16 @@ body {
     padding-top: 150px; /* Adjust this value to control the height of the wood background */
 }
 
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .tab-button {
     background-color: #ff6600;
     color: white;
@@ -41,6 +52,8 @@ body {
     border: none;
     outline: none;
     border-radius: 4px 4px 0 0;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Make the buttons take up equal width */
 }
 
 .tab-button:hover {
@@ -73,6 +86,86 @@ body {
 /* Styles for individual meal blocks (square) */
 .meal-block {
     width: calc(25% - 10px); /* Increase the width to 25% */
+    max-width: 200px; /* Set a maximum width for meal blocks */
+    height: 300px; /* Set the desired height */
+    overflow: hidden; /* Crop overflowing content */
+    border: 1px solid #000; /* Add a black border */
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Style for the meal image container */
+.meal-image-container {
+    background-color: #ccc; /* Gray background color for the container */
+    padding: 0; /* Remove padding to fill the entire container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%; /* Adjust the height to control cropping */
+    background-size: cover; /* Add this property to make the image cover the container */
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden; /* Crop overflowing content */
+}
+
+/* Style for the meal image */
+.meal-image-container img {
+    max-width: 100%; /* Make sure the image doesn't exceed the container width */
+    max-height: 100%; /* Make sure the image doesn't exceed the container height */
+    object-fit: cover; /* Crop and center the image within its container */
+}
+
+/* ... Other CSS rules remain the same ... */
+
+/* Media query for screens with a maximum width of 768px (typical for phones) */
+@media (max-width: 768px) {
+    .tab-buttons {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        align-items: stretch; /* Stretch buttons to full width */
+    }
+
+    .tab-button {
+        flex-grow: unset; /* Reset button width to default */
+        margin: 0; /* Remove margin for buttons */
+    }
+
+    /* Add more mobile-specific styling as needed */
+}
+
+.tab-button:hover {
+    background-color: #cc5500;
+    transition: background-color 0.3s ease;
+}
+
+/* Styles for the content of each tab */
+.tab-content {
+    padding: 20px;
+    border: 10px solid black;
+    border-radius: 4px;
+    background-color: orange;
+    text-align: center;
+}
+
+.content-outline {
+    padding: 20px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+
+/* Styles for the meals container */
+.meals-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Styles for individual meal blocks (square) */
+.meal-block {
+    width: calc(25% - 10px); /* Increase the width to 25% */
     height: 300px; /* Set the desired height */
     padding: 0; /* Remove padding to eliminate white spaces */
     border: 1px solid #000; /* Add a black border */
@@ -82,6 +175,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
+
 
 /* Style for the meal image container */
 .meal-image-container {
@@ -327,8 +421,8 @@ body {
             <h2>Burgers and Hot Dogs</h2>
             <div class="content-outline">
                 <!-- Display meals with images above names -->
-                <div class="meals-container">
-                    <!-- Meal 1 -->
+               
+                 
                     <div class="meal-block">
                         <div class="meal-image-container">
                             <img src="OIP (12).jpeg" alt="Meal 1" class="meal-image">
@@ -337,7 +431,6 @@ body {
                         <div class="meal-price">R10.99</div>
                         <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
                     </div>
-                    
                     <!-- Continue adding more meals here -->
                 </div>
             </div>
@@ -351,15 +444,7 @@ body {
             <div class="content-outline">
                 <div class="meals-container">
                     <!-- Existing meal block -->
-                    <div class="meal-block">
-                        <div class="meal-image-container">
-                            <img src="MONEY.png" alt="New Meal">
-                        </div>
-                        <div class="meal-name">Meal 2</div>
-                        <div class="meal-price">R12.99</div>
-                        <button class="add-to-cart" onclick="addToCart('Meal 2', 12.99)">Add to Cart</button>
-                    </div>
-                    
+                  
                     <!-- You can add more meal blocks here -->
                 </div>
             </div>
@@ -371,16 +456,7 @@ body {
         <div class="tab-content">
             <h2>Pizza</h2>
             <div class="content-outline">
-                <div class="meals-container">
-                    <!-- Existing meal block -->
-                    <div class="meal-block">
-                        <div class="meal-image-container">
-                            <img src="meal-image.jpg" alt="New Meal">
-                        </div>
-                        <div class="meal-name">Pizza 1</div>
-                        <div class="meal-price">R14.99</div>
-                        <button class="add-to-cart" onclick="addToCart('Pizza 1', 14.99)">Add to Cart</button>
-                    </div>
+           
                     
                     <!-- You can add more meal blocks here -->
                 </div>
