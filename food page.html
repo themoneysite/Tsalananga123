@@ -7,113 +7,119 @@
     <link rel="stylesheet" href="styles.css">
     <title>Tabbed Page</title>
     <style>
-        /* Common styles for item containers */
-        .item-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background-color: white;
-        }
+    /* Common styles for item containers */
+.item-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    justify-content: space-between; /* Space evenly within each item container */
+    align-items: center; /* Center align items horizontally */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
 
-        body {
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
-            color: #333;
-        }
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
 
-        /* Styles for the tabs and tab buttons */
-        .tab {
-            display: none;
-            background-image: url('wood.png'); /* Background image URL */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding-top: 150px; /* Adjust this value to control the height of the wood background */
-        }
+/* Styles for the tabs and tab buttons */
+.tab {
+    display: none;
+    background-image: url('wood.png'); /* Background image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 150px; /* Adjust this value to control the height of the wood background */
+}
 
-        .tab-button {
-            background-color: #ff6600;
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            border-radius: 4px 4px 0 0;
-        }
+.tab-button {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4px 4px 0 0;
+}
 
-        .tab-button:hover {
-            background-color: #cc5500;
-            transition: background-color 0.3s ease;
-        }
+.tab-button:hover {
+    background-color: #cc5500;
+    transition: background-color 0.3s ease;
+}
 
-        /* Styles for the content of each tab */
-        .tab-content {
-            padding: 20px;
-            border: 10px solid black;
-            border-radius: 4px;
-            background-color: orange;
-            text-align: center;
-        }
+/* Styles for the content of each tab */
+.tab-content {
+    padding: 20px;
+    border: 10px solid black;
+    border-radius: 4px;
+    background-color: orange;
+    text-align: center;
+}
 
-        .content-outline {
-            padding: 20px;
-            background-color: white;
-            border-radius: 4px;
-        }
+.content-outline {
+    padding: 20px;
+    background-color: white;
+    border-radius: 4px;
+}
 
-        /* Styles for the meals container */
-        .meals-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+/* Styles for the meals container */
+.meals-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
-        /* Styles for individual meal blocks (square) */
-        .meal-block {
-            width: 419px; /* Increase the width to 25% */
-            height: 550px; /* Set the desired height */
-            padding: 0; /* Remove padding to eliminate white spaces */
-            border: 1px solid #000; /* Add a black border */
-            border-radius: 4px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+/* Styles for individual meal blocks (square) */
+.meal-block {
+    width: 100%; /* Full-width on smaller screens */
+    max-width: 300px; /* Limit width for larger screens */
+    padding: 10px;
+    margin: 0 auto; /* Center align on all screens */
+    border: 1px solid #000;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-        /* Style for the meal image container */
- 
+/* Style for the meal image container */
+.meal-image-container {
+    background-color: #ccc;
+    width: 100%;
+    padding-bottom: 75%; /* Maintain a 4:3 aspect ratio */
+    position: relative;
+}
 
+/* Style for the meal image */
+.meal-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain image aspect ratio */
+    position: absolute;
+}
 
-        /* Style for the meal image */
-        .meal-image-container img {
-            width: 419px;
-            height: 400px;
-        
-        }
+/* Styles for meal name and price */
+.meal-name,
+.meal-price {
+    margin: 5px;
+}
 
-        /* Styles for meal name and price */
-        .meal-name,
-        .meal-price {
-            margin: 5px;
-        }
+/* Style for the "Add to Cart" button */
+.add-to-cart {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-        /* Style for the "Add to Cart" button */
-        .add-to-cart {
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        /* Styles for the shopping cart tab */
-        /* Styles for the shopping cart tab */
+/* Styles for the shopping cart tab */
 #cart-tab .tab-content {
     background-color: #fff;
     padding: 20px;
@@ -188,73 +194,43 @@
     background-color: #555;
 }
 
-
 .contact-form {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 400px;
-    }
-    .contact-form label {
-      font-weight: bold;
-    }
-    .contact-form input[type="tel"],
-    .contact-form input[type="email"],
-    .contact-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    .contact-form button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .contact-form button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-
-#contact-info {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 10px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
 }
 
-#cart-items-text {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 10px;
+.contact-form label {
+    font-weight: bold;
 }
 
-.send-order-button {
-    background-color: #ff6600;
+.contact-form input[type="tel"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.contact-form button {
+    background-color: #007bff;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px;
-    float: right;
-    font-size: 18px;
 }
 
-.send-order-button:hover {
-    background-color: #cc5500;
+.contact-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
+
 /* Style for the contact form */
 .contact-form {
     background-color: #fff;
@@ -282,29 +258,24 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
- /* Media Query for Mobile Devices */
- @media screen and (max-width: 768px) {
-            .meals-container {
-                flex-direction: column; /* Stack meals vertically on small screens */
-            }
 
-            .meal-block {
-                width: 100%; /* Full-width for small screens */
-            }
-        }
-.contact-form button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%; /* Make the button full width on mobile */
-}
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 768px) {
+    .meals-container {
+        flex-direction: column; /* Stack meals vertically on small screens */
+    }
 
-.contact-form button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+    .meal-block {
+        width: 100%; /* Full-width for small screens */
+    }
+
+    .tab-button {
+        width: 100%; /* Make tab buttons full-width on small screens */
+        border-radius: 0; /* Remove button border radius */
+        margin-bottom: 10px; /* Add spacing between tab buttons */
+    }
+
+    /* Adjust other styles for smaller screens as needed */
 }
 
 
