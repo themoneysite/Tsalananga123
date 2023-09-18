@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Page</title>
+    <link rel="stylesheet" href="styles.css">
     <title>Tabbed Page</title>
     <style>
         /* Common styles for item containers */
@@ -86,7 +88,7 @@
         /* Style for the meal image container */
         .meal-image-container {
     background-color: #ccc; /* Gray background color for the container */
-    width: 400px;
+    width: 419px;
     height: 420px;
     display: flex;
     justify-content: center;
@@ -99,8 +101,8 @@
 
         /* Style for the meal image */
         .meal-image-container img {
-            width: 595px;
-            height: 420px;
+            width: 419px;
+            height: 400px;
         
         }
 
@@ -290,7 +292,16 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
+ /* Media Query for Mobile Devices */
+ @media screen and (max-width: 768px) {
+            .meals-container {
+                flex-direction: column; /* Stack meals vertically on small screens */
+            }
 
+            .meal-block {
+                width: 100%; /* Full-width for small screens */
+            }
+        }
 .contact-form button {
     background-color: #007bff;
     color: #fff;
