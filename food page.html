@@ -444,9 +444,9 @@
                     <div class="meal-image-container">
                         <img src="OIP (12).jpeg" alt="Meal 1" class="meal-image">
                     </div>
-                    <div class="meal-name">sbbxbvxchzhszzhzhzxbxz</div>
-                    <div class="meal-price">R10.99</div>
-                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                    <div class="meal-name">score</div>
+                    <div class="meal-price">R15.00</div>
+                    <button class="add-to-cart" onclick="addToCart('score', 15.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
                     <div class="meal-image-container">
@@ -494,48 +494,36 @@
             <!-- Total -->
             <button class="copy-cart-button" onclick="copyCartItems()">Copy Cart Items</button>
             <div class="total">Total: <span id="cart-total">R0.00</span></div>
+        </div>
 
-            <!-- Contact information form -->
-            <form
-                id="contact-form"
-                class="contact-form"
-                action="https://formspree.io/f/xwkdqede"
-                method="POST"
-            >
-                <!-- Phone Number -->
-                <label for="phone">Phone Number:</label>
-                <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    pattern="[0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                    required
-                    onkeyup="validateForm()" <!-- Add this event handler to enable the button -->
-                >
+        <!-- Contact information form -->
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xwkdqede" method="POST">
+            <!-- Phone Number -->
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required onkeyup="validateForm()">
 
-                <!-- Email Address -->
-                <label for="email">Email Address:</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|[0-9]{10}"
-                    required
-                    onkeyup="validateForm()" <!-- Add this event handler to enable the button -->
-                >
+            <!-- Name -->
+<label for="name">Name:</label>
+<input
+    type="text"
+    id="name"
+    name="name" <!-- Change the "name" attribute to "name" -->
+    required
+    onkeyup="validateForm()"
+>
+ 
 
-                <label for="cart-items-text">Copy and Paste Your Cart Items to confirm your order:</label>
-                <textarea id="cart-items-text" name="cart-items-text" rows="4" cols="50"></textarea>
+            <label for="cart-items-text">Copy and Paste Your Cart Items to confirm your order:</label>
+            <textarea id="cart-items-text" name="cart-items-text" rows="4" cols="50"></textarea>
 
-                <!-- Add this button inside your cart tab's content -->
-                <button
-                    type="button" <!-- Change type to "button" to prevent form submission -->
-                    class="send-order-button"
-                    onclick="submitOrder()"
-                    disabled <!-- Initially disable the button -->
-                >
-                    Submit Order
-                </button>
+            <!-- Submit Order button -->
+            <button type="button" class="send-order-button" onclick="submitOrder()" disabled>
+                Submit Order
+            </button>
+        </form>
+    </div>
+</div>
+
             </form>
         </div>
     </div>
@@ -548,6 +536,7 @@
         <h2>Contact Us</h2>
         <div class="content-outline">
             <!-- Contact form -->
+            
             <form
                 id="contact-form"
                 class="contact-form"
