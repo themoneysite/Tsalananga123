@@ -34,36 +34,39 @@
         }
 
         /* Styles for the tabs and tab buttons */
-        .tab {
-            display: none;
-            background-image: url('wood.png'); /* Background image URL */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding-top: 150px; /* Adjust this value to control the height of the wood background */
-        }
+    
 
-        .tab-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+       /* Styles for the tabs and tab buttons */
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Add background color with transparency */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1; /* Ensure the buttons are above the wood image */
+}
 
-        .tab-button {
-            background-color: #ff6600;
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            border-radius: 4px 4px 0 0;
-            margin-bottom: 10px;
-            flex-grow: 1; /* Make the buttons take up equal width */
-        }
+.tab-button {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Make the buttons take up equal width */
+    transition: background-color 0.3s ease;
+}
+
+/* Rest of your CSS remains the same */
+
 
         .tab-button:hover {
             background-color: #cc5500;
@@ -484,6 +487,8 @@
     </div>
 </div>
 
+<!-- Cart tab content -->
+  <!-- Cart tab content -->
   <div id="cart-tab" class="tab">
     <div class="tab-content">
         <h2>Shopping Cart</h2>
@@ -581,6 +586,53 @@ method="POST"
     </div>
 </div>
 <script>
+     let currentTab = 1; // Initialize the current tab
+
+const tabContentContainer = document.querySelector(".tab-content-container");
+
+// Add event listeners for touch events
+let touchStartX = 0;
+let touchEndX = 0;
+
+tabContentContainer.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+});
+
+tabContentContainer.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+
+    // Determine the swipe direction and switch tabs accordingly
+    if (touchStartX - touchEndX > 50) {
+        // Swipe left, switch to the next tab
+        showTab(currentTab + 1);
+    } else if (touchEndX - touchStartX > 50) {
+        // Swipe right, switch to the previous tab
+        showTab(currentTab - 1);
+    }
+});
+
+// Function to show a specific tab
+function showTab(tabIndex) {
+    const tabs = document.querySelectorAll('.tab');
+    
+    if (tabIndex < 1) {
+        tabIndex = tabs.length;
+    }
+    if (tabIndex > tabs.length) {
+        tabIndex = 1;
+    }
+
+    currentTab = tabIndex;
+
+    tabs.forEach((tab) => {
+        tab.style.display = 'none';
+    });
+
+    tabs[currentTab - 1].style.display = 'block';
+}
+
+// Open the first tab by default
+showTab(1);
     function validateForm() {
 var phoneInput = document.getElementById("phone");
 var emailInput = document.getElementById("email");
