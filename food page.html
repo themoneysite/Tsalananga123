@@ -34,7 +34,7 @@
         }
 
         /* Styles for the tabs and tab buttons */
-    
+      
 
        /* Styles for the tabs and tab buttons */
 .tab-buttons {
@@ -425,6 +425,9 @@
     </style>
 </head>
 <body>
+    <!-- Add these attributes to the <body> tag -->
+<body onmousedown="handleTouchStart(event)" ontouchstart="handleTouchStart(event)" onmousemove="handleTouchMove(event)" ontouchmove="handleTouchMove(event)" onmouseup="handleTouchEnd()" ontouchend="handleTouchEnd()">
+
 <!-- ... (Your previous HTML code remains unchanged) ... -->
 <!-- Tab buttons -->
 <button class="tab-button" onclick="openTab('tab1')">Tab 1</button>
@@ -447,16 +450,88 @@
                     <div class="meal-image-container">
                         <img src="OIP (12).jpeg" alt="Meal 1" class="meal-image">
                     </div>
-                    <div class="meal-name">sbbxbvxchzhszzhzhzxbxz</div>
-                    <div class="meal-price">R10.99</div>
+                    <div class="meal-name">Plain Burger</div>
+                    <div class="meal-price">R30.00</div>
                     <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
                     <div class="meal-image-container">
                         <img src="OIP (12).jpeg" alt="Meal 2" class="meal-image">
                     </div>
-                    <div class="meal-name">sbbxbvxchzhszzhzhzxbxz</div>
-                    <div class="meal-price">R10.99</div>
+                    <div class="meal-name">Plain Burger with Chips</div>
+                    <div class="meal-price">R40.00</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 3" class="meal-image">
+                    </div>
+                    <div class="meal-name">Double Burger</div>
+                    <div class="meal-price">R40.00</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 4" class="meal-image">
+                    </div>
+                    <div class="meal-name">Double Burger with Chips</div>
+                    <div class="meal-price">R50.00</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 5" class="meal-image">
+                    </div>
+                    <div class="meal-name">Small Chips</div>
+                    <div class="meal-price">R20.00</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 6" class="meal-image">
+                    </div>
+                    <div class="meal-name">Large Chips</div>
+                    <div class="meal-price">R30.00</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 7" class="meal-image">
+                    </div>
+                    <div class="meal-name">Plain Roll</div>
+                    <div class="meal-price">R3.50</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 8" class="meal-image">
+                    </div>
+                    <div class="meal-name">Hot Dog</div>
+                    <div class="meal-price">R25.00</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 9" class="meal-image">
+                    </div>
+                    <div class="meal-name">Boerewors Roll</div>
+                    <div class="meal-price">R30.00</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 10" class="meal-image">
+                    </div>
+                    <div class="meal-name">Russian and Chips</div>
+                    <div class="meal-price">R35.00</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 11" class="meal-image">
+                    </div>
+                    <div class="meal-name">Russian only</div>
+                    <div class="meal-price">R15.00</div>
                     <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
                 </div>
                 <!-- Continue adding more meals here -->
@@ -586,228 +661,176 @@ method="POST"
     </div>
 </div>
 <script>
-     let currentTab = 1; // Initialize the current tab
+    let cart = []; // Array to store items in the cart
+    let touchStartX, touchEndX; // Variables for touch events
 
-const tabContentContainer = document.querySelector(".tab-content-container");
-
-// Add event listeners for touch events
-let touchStartX = 0;
-let touchEndX = 0;
-
-tabContentContainer.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-});
-
-tabContentContainer.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].clientX;
-
-    // Determine the swipe direction and switch tabs accordingly
-    if (touchStartX - touchEndX > 50) {
-        // Swipe left, switch to the next tab
-        showTab(currentTab + 1);
-    } else if (touchEndX - touchStartX > 50) {
-        // Swipe right, switch to the previous tab
-        showTab(currentTab - 1);
-    }
-});
-
-// Function to show a specific tab
-function showTab(tabIndex) {
-    const tabs = document.querySelectorAll('.tab');
-    
-    if (tabIndex < 1) {
-        tabIndex = tabs.length;
-    }
-    if (tabIndex > tabs.length) {
-        tabIndex = 1;
+    // Function to open a tab by its ID and hide others
+    function openTab(tabId) {
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach((tab) => {
+            tab.style.display = 'none';
+        });
+        document.getElementById(tabId).style.display = 'block';
     }
 
-    currentTab = tabIndex;
+    // Function to add an item to the cart
+    function addToCart(itemName, itemPrice) {
+        const item = {
+            name: itemName,
+            price: itemPrice,
+            quantity: 1
+        };
 
-    tabs.forEach((tab) => {
-        tab.style.display = 'none';
-    });
+        // Check if the item is already in the cart
+        const existingItem = cart.find((cartItem) => cartItem.name === itemName);
 
-    tabs[currentTab - 1].style.display = 'block';
-}
+        if (existingItem) {
+            // If the item is already in the cart, increase its quantity
+            existingItem.quantity++;
+        } else {
+            // If it's not in the cart, add it
+            cart.push(item);
+        }
 
-// Open the first tab by default
-showTab(1);
-    function validateForm() {
-var phoneInput = document.getElementById("phone");
-var emailInput = document.getElementById("email");
-var submitButton = document.querySelector(".send-order-button");
+        // Update the cart display
+        displayCart();
+    }
 
-// Check if either phone or email is filled in
-if (phoneInput.value.trim() !== "" || emailInput.value.trim() !== "") {
- // At least one field is filled in, enable the submit button
- submitButton.removeAttribute("disabled");
-} else {
- // Neither phone nor email is filled in, disable the submit button
- submitButton.setAttribute("disabled", "disabled");
-}
-}
-     function submitOrder() {
-// Submit the form to FormsPree (or your desired endpoint)
-document.getElementById("contact-form").submit();
+    // Function to display the cart contents
+    function displayCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
 
-// Clear the shopping cart
-cart = [];
-displayCart(); // Update the cart display
+        cartItemsContainer.innerHTML = ''; // Clear the cart
+        cartTotal.textContent = 'R0.00'; // Clear the total bill with "R"
 
-// Clear the text boxes
-document.getElementById("contact-info").value = "";
-document.getElementById("cart-items-text").value = "";
-}
-   function copyCartItems() {
-const cartItems = cart.map((item) => {
-   return `${item.name} (Quantity: ${item.quantity}, Price: $${(item.price * item.quantity).toFixed(2)})`;
-});
+        // Calculate the total price and display each item in the cart
+        let totalPrice = 0;
 
-const cartItemsText = cartItems.join('\n'); // Join cart items with line breaks
+        cart.forEach((item) => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
 
-// Create a temporary textarea element to copy the text
-const textarea = document.createElement('textarea');
-textarea.value = cartItemsText;
-document.body.appendChild(textarea);
+            const itemName = document.createElement('div');
+            itemName.textContent = item.name;
 
-// Select and copy the text from the textarea
-textarea.select();
-document.execCommand('copy');
+            const quantityButtons = document.createElement('div');
+            quantityButtons.classList.add('quantity-buttons');
 
-// Remove the temporary textarea
-document.body.removeChild(textarea);
+            const decreaseButton = document.createElement('button');
+            decreaseButton.textContent = '-';
+            decreaseButton.classList.add('quantity-button');
+            decreaseButton.onclick = () => decreaseQuantity(item);
 
-// Provide user feedback (you can customize this part)
-alert('Cart items copied to clipboard:\n' + cartItemsText);
-}
+            const quantityInput = document.createElement('input');
+            quantityInput.value = item.quantity;
+            quantityInput.classList.add('quantity-input');
+            quantityInput.disabled = true;
 
-   
-   let cart = []; // Array to store items in the cart
+            const increaseButton = document.createElement('button');
+            increaseButton.textContent = '+';
+            increaseButton.classList.add('quantity-button');
+            increaseButton.onclick = () => increaseQuantity(item);
 
-   // Function to open a tab by its ID and hide others
-   function openTab(tabId) {
-       const tabs = document.querySelectorAll('.tab');
-       tabs.forEach((tab) => {
-           tab.style.display = 'none';
-       });
-       document.getElementById(tabId).style.display = 'block';
-   }
+            const itemPrice = document.createElement('div');
+            itemPrice.textContent = 'R' + (item.price * item.quantity).toFixed(2); // Updated price with "R"
+            itemPrice.classList.add('item-price'); // Add a class for styling
 
-   // Function to add an item to the cart
-   function addToCart(itemName, itemPrice) {
-       const item = {
-           name: itemName,
-           price: itemPrice,
-           quantity: 1
-       };
+            cartItemDiv.appendChild(itemName);
+            cartItemDiv.appendChild(quantityButtons);
+            cartItemDiv.appendChild(itemPrice); // Append the item price after the quantity buttons
 
-       // Check if the item is already in the cart
-       const existingItem = cart.find((cartItem) => cartItem.name === itemName);
+            quantityButtons.appendChild(decreaseButton);
+            quantityButtons.appendChild(quantityInput);
+            quantityButtons.appendChild(increaseButton);
 
-       if (existingItem) {
-           // If the item is already in the cart, increase its quantity
-           existingItem.quantity++;
-       } else {
-           // If it's not in the cart, add it
-           cart.push(item);
-       }
+            cartItemsContainer.appendChild(cartItemDiv);
 
-       // Update the cart display
-       displayCart();
-   }
+            totalPrice += item.price * item.quantity;
+        });
 
-   // Function to display the cart contents
-   // Function to display the cart contents
-function displayCart() {
-const cartItemsContainer = document.getElementById('cart-items');
-const cartTotal = document.getElementById('cart-total');
+        // Display the total price with "R"
+        cartTotal.textContent = 'R' + totalPrice.toFixed(2);
+    }
 
-cartItemsContainer.innerHTML = ''; // Clear the cart
-cartTotal.textContent = 'R0.00'; // Clear the total bill with "R"
+    // Function to decrease the quantity of an item in the cart
+    function decreaseQuantity(item) {
+        if (item.quantity > 1) {
+            item.quantity--;
+            displayCart();
+        }
+    }
 
-// Calculate the total price and display each item in the cart
-let totalPrice = 0;
+    // Function to increase the quantity of an item in the cart
+    function increaseQuantity(item) {
+        item.quantity++;
+        displayCart();
+    }
 
-cart.forEach((item) => {
-   const cartItemDiv = document.createElement('div');
-   cartItemDiv.classList.add('cart-item');
+    // Function to send the order
+    function sendOrder() {
+        const contactInfo = document.getElementById('contact-info').value;
+        if (contactInfo.trim() === "") {
+            alert('Please enter your contact information (phone number or email) before submitting the order.');
+            return;
+        }
 
-   const itemName = document.createElement('div');
-   itemName.textContent = item.name;
+        // Here, you can handle the order submission, e.g., send the order details and contactInfo to a server.
+        // Replace this with your actual order submission logic.
 
-   const quantityButtons = document.createElement('div');
-   quantityButtons.classList.add('quantity-buttons');
+        alert('Order sent! Contact Information: ' + contactInfo);
+        cart = []; // Clear the cart
+        displayCart(); // Update the cart display
+    }
 
-   const decreaseButton = document.createElement('button');
-   decreaseButton.textContent = '-';
-   decreaseButton.classList.add('quantity-button');
-   decreaseButton.onclick = () => decreaseQuantity(item);
+    // Open the first tab by default
+    openTab('tab1');
 
-   const quantityInput = document.createElement('input');
-   quantityInput.value = item.quantity;
-   quantityInput.classList.add('quantity-input');
-   quantityInput.disabled = true;
+    // Function to handle touch start
+    function handleTouchStart(event) {
+        touchStartX = event.clientX || event.touches[0].clientX;
+    }
 
-   const increaseButton = document.createElement('button');
-   increaseButton.textContent = '+';
-   increaseButton.classList.add('quantity-button');
-   increaseButton.onclick = () => increaseQuantity(item);
+    // Function to handle touch move
+    function handleTouchMove(event) {
+        if (!touchStartX) return;
+        touchEndX = event.clientX || event.touches[0].clientX;
+    }
 
-   const itemPrice = document.createElement('div');
-   itemPrice.textContent = 'R' + (item.price * item.quantity).toFixed(2); // Updated price with "R"
-   itemPrice.classList.add('item-price'); // Add a class for styling
+    // Function to handle touch end and navigate between tabs
+    function handleTouchEnd() {
+        if (!touchStartX || !touchEndX) return;
 
-   cartItemDiv.appendChild(itemName);
-   cartItemDiv.appendChild(quantityButtons);
-   cartItemDiv.appendChild(itemPrice); // Append the item price after the quantity buttons
+        const deltaX = touchEndX - touchStartX;
+        const tabs = document.querySelectorAll('.tab');
 
-   quantityButtons.appendChild(decreaseButton);
-   quantityButtons.appendChild(quantityInput);
-   quantityButtons.appendChild(increaseButton);
+        if (deltaX > 50) {
+            // Swipe right, go to the previous tab
+            for (let i = 0; i < tabs.length; i++) {
+                if (tabs[i].style.display === 'block') {
+                    tabs[i].style.display = 'none';
+                    const prevTabIndex = (i - 1 + tabs.length) % tabs.length;
+                    tabs[prevTabIndex].style.display = 'block';
+                    break;
+                }
+            }
+        } else if (deltaX < -50) {
+            // Swipe left, go to the next tab
+            for (let i = 0; i < tabs.length; i++) {
+                if (tabs[i].style.display === 'block') {
+                    tabs[i].style.display = 'none';
+                    const nextTabIndex = (i + 1) % tabs.length;
+                    tabs[nextTabIndex].style.display = 'block';
+                    break;
+                }
+            }
+        }
 
-   cartItemsContainer.appendChild(cartItemDiv);
-
-   totalPrice += item.price * item.quantity;
-});
-
-// Display the total price with "R"
-cartTotal.textContent = 'R' + totalPrice.toFixed(2);
-}
-
-
-   // Function to decrease the quantity of an item in the cart
-   function decreaseQuantity(item) {
-       if (item.quantity > 1) {
-           item.quantity--;
-           displayCart();
-       }
-   }
-
-   // Function to increase the quantity of an item in the cart
-   function increaseQuantity(item) {
-       item.quantity++;
-       displayCart();
-   }
-
-   // Function to send the order
-   function sendOrder() {
-       const contactInfo = document.getElementById('contact-info').value;
-       if (contactInfo.trim() === "") {
-           alert('Please enter your contact information (phone number or email) before submitting the order.');
-           return;
-       }
-
-       // Here, you can handle the order submission, e.g., send the order details and contactInfo to a server.
-       // Replace this with your actual order submission logic.
-
-       alert('Order sent! Contact Information: ' + contactInfo);
-       cart = []; // Clear the cart
-       displayCart(); // Update the cart display
-   }
-
-   // Open the first tab by default
-   openTab('tab1');
+        // Reset touch event variables
+        touchStartX = null;
+        touchEndX = null;
+    }
+</script>
 </script>
 </body>
 </html>
