@@ -663,16 +663,14 @@ method="POST"
 <script>
     let cart = []; // Array to store items in the cart
     let touchStartX, touchEndX; // Variables for touch events
-    let currentTab = 0; // Track the current tab index
 
-    // Function to open a tab by its index and hide others
-    function openTab(tabIndex) {
+    // Function to open a tab by its ID and hide others
+    function openTab(tabId) {
         const tabs = document.querySelectorAll('.tab');
         tabs.forEach((tab) => {
             tab.style.display = 'none';
         });
-        tabs[tabIndex].style.display = 'block';
-        currentTab = tabIndex;
+        document.getElementById(tabId).style.display = 'block';
     }
 
     // Function to add an item to the cart
@@ -786,7 +784,7 @@ method="POST"
     }
 
     // Open the first tab by default
-    openTab(currentTab);
+    openTab('tab1');
 
     // Function to handle touch start
     function handleTouchStart(event) {
@@ -806,12 +804,26 @@ method="POST"
         const deltaX = touchEndX - touchStartX;
         const tabs = document.querySelectorAll('.tab');
 
-        if (deltaX > 50 && currentTab > 0) {
+        if (deltaX > 50) {
             // Swipe right, go to the previous tab
-            openTab(currentTab - 1);
-        } else if (deltaX < -50 && currentTab < tabs.length - 1) {
+            for (let i = 0; i < tabs.length; i++) {
+                if (tabs[i].style.display === 'block') {
+                    tabs[i].style.display = 'none';
+                    const prevTabIndex = (i - 1 + tabs.length) % tabs.length;
+                    tabs[prevTabIndex].style.display = 'block';
+                    break;
+                }
+            }
+        } else if (deltaX < -50) {
             // Swipe left, go to the next tab
-            openTab(currentTab + 1);
+            for (let i = 0; i < tabs.length; i++) {
+                if (tabs[i].style.display === 'block') {
+                    tabs[i].style.display = 'none';
+                    const nextTabIndex = (i + 1) % tabs.length;
+                    tabs[nextTabIndex].style.display = 'block';
+                    break;
+                }
+            }
         }
 
         // Reset touch event variables
