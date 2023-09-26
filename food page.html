@@ -661,6 +661,842 @@ method="POST"
     </div>
 </div>
 <script>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> <!-- Add maximum-scale attribute -->
+    <title>Tabbed Page</title>
+    <style>
+        /* Common styles for item containers */
+        /* Common styles for item containers */
+        .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    max-width: 1200px; /* Set a maximum width for larger screens */  
+   
+    background-color: #f0f0f0; /* Background color for the page */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto; /* Center the content horizontally */
+
+    
+}
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            color: #333;
+            width: 50vh;
+           
+        }
+
+        /* Styles for the tabs and tab buttons */
+      
+
+       /* Styles for the tabs and tab buttons */
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Add background color with transparency */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1; /* Ensure the buttons are above the wood image */
+}
+
+.tab-button {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Make the buttons take up equal width */
+    transition: background-color 0.3s ease;
+}
+
+/* Rest of your CSS remains the same */
+
+
+        .tab-button:hover {
+            background-color: #cc5500;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Styles for the content of each tab */
+        .tab-content {
+            padding: 20px;
+            border: 10px solid black;
+            border-radius: 4px;
+            background-color: orange;
+            text-align: center;
+        }
+
+        .content-outline {
+            padding: 20px;
+            background-color: white;
+            border-radius: 4px;
+        }
+
+        /* Styles for the meals container */
+        .meals-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* Styles for individual meal blocks (square) */
+        .meal-block {
+            width: calc(25% - 10px); /* Increase the width to 25% */
+            max-width: 200px; /* Set a maximum width for meal blocks */
+            height: 300px; /* Set the desired height */
+            overflow: hidden; /* Crop overflowing content */
+            border: 1px solid #000; /* Add a black border */
+            border-radius: 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Style for the meal image container */
+        .meal-image-container {
+            background-color: #ccc; /* Gray background color for the container */
+            padding: 0; /* Remove padding to fill the entire container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50%; /* Adjust the height to control cropping */
+            background-size: cover; /* Add this property to make the image cover the container */
+            background-repeat: no-repeat;
+            background-position: center;
+            overflow: hidden; /* Crop overflowing content */
+        }
+
+        /* Style for the meal image */
+        .meal-image-container img {
+            max-width: 100%; /* Make sure the image doesn't exceed the container width */
+            max-height: 100%; /* Make sure the image doesn't exceed the container height */
+            object-fit: cover; /* Crop and center the image within its container */
+        }
+
+        /* ... Other CSS rules remain the same ... */
+
+        /* Media query for screens with a maximum width of 768px (typical for phones) */
+        @media (max-width: 768px) {
+    /* Adjust styles for smaller screens here */
+}
+
+            /* Add more mobile-specific styling as needed */
+        
+
+        .tab-button:hover {
+            background-color: #cc5500;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Styles for the content of each tab */
+        .tab-content {
+            padding: 20px;
+            border: 10px solid black;
+            border-radius: 4px;
+            background-color: orange;
+            text-align: center;
+        }
+
+        .content-outline {
+            
+            padding: 20px;
+            background-color: white;
+            border-radius: 4px;
+        }
+
+
+        /* Styles for the meals container */
+        .meals-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* Center the meals horizontally */
+}
+
+        /* Styles for individual meal blocks (square) */
+        .meal-block {
+            width: calc(300% - 10px); /* Increase the width to 25% */
+            height: calc(300% - 10px); /* Set the desired height */
+            padding: 0; /* Remove padding to eliminate white spaces */
+            border: 1px solid #000; /* Add a black border */
+            border-radius: 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+  
+        /* Style for the meal image container */
+      
+        /* Style for the meal image */
+        .meal-image-container img {
+            max-width: 100%; /* Make sure the image doesn't exceed the container width */
+            max-height: 100%; /* Make sure the image doesn't exceed the container height */
+        }
+
+        /* Styles for meal name and price */
+        .meal-name,
+        .meal-price {
+            margin: 5px;
+        }
+
+        /* Style for the "Add to Cart" button */
+        .add-to-cart {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Styles for the shopping cart tab */
+        #cart-tab .tab-content {
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        #cart-tab h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #cart-items {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 18px;
+            align-items: center;
+        }
+
+        .item-name {
+            flex-grow: 1;
+            word-wrap: break-word;
+        }
+
+        .item-quantity {
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        .item-price {
+            text-align: right;
+            font-weight: bold;
+            flex-basis: 80px;
+            color: #ff6600;
+        }
+
+        .total {
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 20px;
+            text-align: right;
+            color: #333;
+        }
+
+        .copy-cart-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            float: right;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-cart-button:hover {
+            background-color: #555;
+        }
+
+
+        /* Style for the contact form */
+.contact-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Adjust the width for better mobile layout */
+    margin: 0 auto; /* Center the form horizontally */
+    text-align: left;
+}
+
+
+        .contact-form label {
+            font-weight: bold;
+        }
+
+        .contact-form input[type="tel"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #contact-info {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        #cart-items-text {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .send-order-button {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            float: right;
+            font-size: 18px;
+        }
+
+        .send-order-button:hover {
+            background-color: #cc5500;
+        }
+        #cart-tab .tab-content,
+#contact-tab .tab-content {
+    /* ... (Other styles) ... */
+    max-width: 100%; /* Ensure content doesn't overflow */
+    margin: 0 auto; /* Center the content horizontally */
+}
+        /* Style for the contact form */
+        .contact-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%; /* Adjust the width for better mobile layout */
+            margin: 0 auto;
+            text-align: left; /* Left-align the form content */
+        }
+
+        .contact-form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%; /* Make the button full width on mobile */
+        }
+
+        .contact-form button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Centered container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 30vw; /* Adjust the width as needed */
+            background-color: #f0f0f0; /* Background color for the page */
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add these attributes to the <body> tag -->
+<body onmousedown="handleTouchStart(event)" ontouchstart="handleTouchStart(event)" onmousemove="handleTouchMove(event)" ontouchmove="handleTouchMove(event)" onmouseup="handleTouchEnd()" ontouchend="handleTouchEnd()">
+
+<!-- ... (Your previous HTML code remains unchanged) ... -->
+<!-- Tab buttons -->
+<button class="tab-button" onclick="openTab('tab1')">Tab 1</button>
+<button class="tab-button" onclick="openTab('tab2')">Tab 2</button>
+<button class="tab-button" onclick="openTab('tab3')">Tab 3</button>
+<button class="tab-button" onclick="openTab('cart-tab')">Cart</button>
+
+<!-- Add a button for the "Contact" tab -->
+<button class="tab-button" onclick="openTab('contact-tab')">Contact</button> <!-- New button for the Contact tab -->
+
+<!-- ... (The rest of your HTML code remains unchanged) ... -->
+<!-- Tab content -->
+<div id="tab1" class="tab">
+    <div class="tab-content">
+        <h2>Burgers and Hot Dogs</h2>
+        <div class="content-outline">
+            <!-- Display meals with images above names -->
+            <div class="meals-container">
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 1" class="meal-image">
+                    </div>
+                    <div class="meal-name">Plain Burger</div>
+                    <div class="meal-price">R30.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Plain Burger', 30.00)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 2" class="meal-image">
+                    </div>
+                    <div class="meal-name">Plain Burger with Chips</div>
+                    <div class="meal-price">R40.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Plain Burger with Chips', 40.00)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 3" class="meal-image">
+                    </div>
+                    <div class="meal-name">Double Burger</div>
+                    <div class="meal-price">R40.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Double Burger', 40.00)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 4" class="meal-image">
+                    </div>
+                    <div class="meal-name">Double Burger with Chips</div>
+                    <div class="meal-price">R50.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Double Burger', 50.00)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 5" class="meal-image">
+                    </div>
+                    <div class="meal-name">Small Chips</div>
+                    <div class="meal-price">R20.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Small Chips', 20.00)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 6" class="meal-image">
+                    </div>
+                    <div class="meal-name">Large Chips</div>
+                    <div class="meal-price">R30.00</div>
+                    <button class="add-to-cart" onclick="addToCart('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 7" class="meal-image">
+                    </div>
+                    <div class="meal-name">Plain Roll</div>
+                    <div class="meal-price">R3.50</div>
+                    <button class="add-to-cart" onclick="addToCart('Plain Roll', 3.50)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 8" class="meal-image">
+                    </div>
+                    <div class="meal-name">Hot Dog</div>
+                    <div class="meal-price">R25.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Hot Dog', 25.00)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 9" class="meal-image">
+                    </div>
+                    <div class="meal-name">Boerewors Roll</div>
+                    <div class="meal-price">R30.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Boerewors Roll', 30.00)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 10" class="meal-image">
+                    </div>
+                    <div class="meal-name">Russian and Chips</div>
+                    <div class="meal-price">R35.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Russian and Chips', 35.00)">Add to Cart</button>
+                </div>
+                <div class="meal-block">
+                    <div class="meal-image-container">
+                        <img src="OIP (12).jpeg" alt="Meal 11" class="meal-image">
+                    </div>
+                    <div class="meal-name">Russian only</div>
+                    <div class="meal-price">R15.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Russian only', 15.00)">Add to Cart</button>
+                </div>
+                <!-- Continue adding more meals here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tab 2 content -->
+<div id="tab2" class="tab">
+    <div class="tab-content">
+        <h2>Meals</h2>
+        <div class="content-outline">
+            <div class="meals-container">
+                <!-- Existing meal block -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tab 3 content -->
+<div id="tab3" class="tab">
+    <div class="tab-content">
+        <h2>Pizza</h2>
+        <div class="content-outline">
+            <!-- You can add more meal blocks here -->
+        </div>
+    </div>
+</div>
+
+<!-- Cart tab content -->
+  <!-- Cart tab content -->
+  <div id="cart-tab" class="tab">
+    <div class="tab-content">
+        <h2>Shopping Cart</h2>
+        <div class="content-outline">
+            <!-- Cart items -->
+            <div id="cart-items"></div>
+            <!-- Total -->
+            <button class="copy-cart-button" onclick="copyCartItems()">Copy Cart Items</button>
+            <div class="total">Total: <span id="cart-total">R0.00</span></div>
+            
+<!-- Add this button inside your cart tab's content -->
+
+
+<!-- Contact information form -->
+<form
+id="contact-form"
+class="contact-form"
+action="https://formspree.io/xjvqaadj"
+method="POST"
+>
+<!-- Phone Number -->
+<label for="phone">Phone Number:</label>
+<input type="tel" id="phone" name="phone" pattern="[0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+
+<!-- Name -->
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" required placeholder="Enter your name">
+
+
+<label for="cart-items-text">Copy and Paste Your Cart Items to confirm your order:</label>
+<textarea id="cart-items-text" name="cart-items-text" rows="4" cols="50"></textarea>
+
+<!-- Add this button inside your cart tab's content -->
+
+
+<button type="submit" class="send-order-button" onclick="submitOrder()">Submit Order</button>
+</form>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- ... (Your previous HTML code remains unchanged) ... -->
+
+<!-- Contact tab content -->
+<div id="contact-tab" class="tab">
+    <div class="tab-content">
+        <h2>Contact Us</h2>
+        <div class="content-outline">
+            <!-- Contact form -->
+            <form
+                id="contact-form"
+                class="contact-form"
+                action="https://formspree.io/f/myyqnndy"
+                method="POST"
+            >
+                <!-- Phone Number -->
+                <label for="phone">Phone Number:</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    pattern="[0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                    required
+                    onkeyup="validateForm()" <!-- Add this event handler to enable the button -->
+                >
+
+                <!-- Email Address -->
+                <label for="email">Email Address:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|[0-9]{10}"
+                    required
+                    onkeyup="validateForm()" <!-- Add this event handler to enable the button -->
+                >
+
+                <label for="cart-items-text">Copy and Paste Your Cart Items to confirm your order:</label>
+                <textarea id="cart-items-text" name="cart-items-text" rows="4" cols="50"></textarea>
+
+                <!-- Add this button inside your contact tab's content -->
+                <button
+                    type="button" <!-- Change type to "button" to prevent form submission -->
+                    class="send-order-button"
+                    onclick="submitOrder()"
+                    disabled <!-- Initially disable the button -->
+                >
+                    Submit Order
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    let cart = []; // Array to store items in the cart
+    let touchStartX, touchEndX; // Variables for touch events
+
+    // Function to open a tab by its ID and hide others
+    function openTab(tabId) {
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach((tab) => {
+            tab.style.display = 'none';
+        });
+        document.getElementById(tabId).style.display = 'block';
+    }
+
+    // Function to add an item to the cart
+    function addToCart(itemName, itemPrice) {
+        const item = {
+            name: itemName,
+            price: itemPrice,
+            quantity: 1
+        };
+
+        // Check if the item is already in the cart
+        const existingItem = cart.find((cartItem) => cartItem.name === itemName);
+
+        if (existingItem) {
+            // If the item is already in the cart, increase its quantity
+            existingItem.quantity++;
+        } else {
+            // If it's not in the cart, add it
+            cart.push(item);
+        }
+
+        // Update the cart display
+        displayCart();
+    }
+
+    // Function to display the cart contents
+    function displayCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        cartItemsContainer.innerHTML = ''; // Clear the cart
+        cartTotal.textContent = 'R0.00'; // Clear the total bill with "R"
+
+        // Calculate the total price and display each item in the cart
+        let totalPrice = 0;
+
+        cart.forEach((item) => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
+
+            const itemName = document.createElement('div');
+            itemName.textContent = item.name;
+
+            const quantityButtons = document.createElement('div');
+            quantityButtons.classList.add('quantity-buttons');
+
+            const decreaseButton = document.createElement('button');
+            decreaseButton.textContent = '-';
+            decreaseButton.classList.add('quantity-button');
+            decreaseButton.onclick = () => decreaseQuantity(item);
+
+            const quantityInput = document.createElement('input');
+            quantityInput.value = item.quantity;
+            quantityInput.classList.add('quantity-input');
+            quantityInput.disabled = true;
+
+            const increaseButton = document.createElement('button');
+            increaseButton.textContent = '+';
+            increaseButton.classList.add('quantity-button');
+            increaseButton.onclick = () => increaseQuantity(item);
+
+            const itemPrice = document.createElement('div');
+            itemPrice.textContent = 'R' + (item.price * item.quantity).toFixed(2); // Updated price with "R"
+            itemPrice.classList.add('item-price'); // Add a class for styling
+
+            cartItemDiv.appendChild(itemName);
+            cartItemDiv.appendChild(quantityButtons);
+            cartItemDiv.appendChild(itemPrice); // Append the item price after the quantity buttons
+
+            quantityButtons.appendChild(decreaseButton);
+            quantityButtons.appendChild(quantityInput);
+            quantityButtons.appendChild(increaseButton);
+
+            cartItemsContainer.appendChild(cartItemDiv);
+
+            totalPrice += item.price * item.quantity;
+        });
+
+        // Display the total price with "R"
+        cartTotal.textContent = 'R' + totalPrice.toFixed(2);
+    }
+
+    // Function to decrease the quantity of an item in the cart
+    function decreaseQuantity(item) {
+        if (item.quantity > 1) {
+            item.quantity--;
+            displayCart();
+        }
+    }
+
+    // Function to increase the quantity of an item in the cart
+    function increaseQuantity(item) {
+        item.quantity++;
+        displayCart();
+    }
+
+    // Function to send the order
+    function sendOrder() {
+        const contactInfo = document.getElementById('contact-info').value;
+        if (contactInfo.trim() === "") {
+            alert('Please enter your contact information (phone number or email) before submitting the order.');
+            return;
+        }
+
+        // Here, you can handle the order submission, e.g., send the order details and contactInfo to a server.
+        // Replace this with your actual order submission logic.
+
+        alert('Order sent! Contact Information: ' + contactInfo);
+        cart = []; // Clear the cart
+        displayCart(); // Update the cart display
+    }
+
+    // Open the first tab by default
+    openTab('tab1');
+
+    // Function to handle touch start
+    function handleTouchStart(event) {
+        touchStartX = event.clientX || event.touches[0].clientX;
+    }
+
+    // Function to handle touch move
+    function handleTouchMove(event) {
+        if (!touchStartX) return;
+        touchEndX = event.clientX || event.touches[0].clientX;
+    }
+
+    // Function to handle touch end and navigate between tabs
+    function handleTouchEnd() {
+        if (!touchStartX || !touchEndX) return;
+
+        const deltaX = touchEndX - touchStartX;
+        const tabs = document.querySelectorAll('.tab');
+
+        if (deltaX > 50) {
+            // Swipe right, go to the previous tab
+            for (let i = 0; i < tabs.length; i++) {
+                if (tabs[i].style.display === 'block') {
+                    tabs[i].style.display = 'none';
+                    const prevTabIndex = (i - 1 + tabs.length) % tabs.length;
+                    tabs[prevTabIndex].style.display = 'block';
+                    break;
+                }
+            }
+        } else if (deltaX < -50) {
+            // Swipe left, go to the next tab
+            for (let i = 0; i < tabs.length; i++) {
+                if (tabs[i].style.display === 'block') {
+                    tabs[i].style.display = 'none';
+                    const nextTabIndex = (i + 1) % tabs.length;
+                    tabs[nextTabIndex].style.display = 'block';
+                    break;
+                }
+            }
+        }
+
+        // Reset touch event variables
+        touchStartX = null;
+        touchEndX = null;
+    }
+</script>
+</script>
+</body>
+</html>
     let cart = []; // Array to store items in the cart
     let touchStartX, touchEndX; // Variables for touch events
 
