@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Storage Data</title>
+</head>
+<body>
+    <h1>Local Storage Data</h1>
+    <p>Last Button Clicked:</p>
+    <p id="lastButtonClick"></p>
+    <p>Click Count:</p>
+    <p id="clickCount"></p>
+
+    <script>
+        // Function to retrieve and display the last button clicked
+        function displayLastButtonClick() {
+            const lastButtonClickElement = document.getElementById("lastButtonClick");
+            const lastButtonClicked = localStorage.getItem("lastButtonClicked") || "No button clicked yet";
+            lastButtonClickElement.textContent = lastButtonClicked;
+        }
+
+        // Function to retrieve and display the click count
+        function displayClickCount() {
+            const clickCountElement = document.getElementById("clickCount");
+            const clickCount = localStorage.getItem("clickCount") || 0;
+            clickCountElement.textContent = clickCount + " clicks";
+        }
+
+        // Call the display functions on page load
+        displayLastButtonClick();
+        displayClickCount();
+    </script>
+</body>
+</html>
