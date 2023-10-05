@@ -11,10 +11,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    
-    max-width: 1200px; /* Set a maximum width for larger screens */  
-   
+
+    background-size: cover;
     background-color: #f0f0f0; /* Background color for the page */
     position: absolute;
     top: 0;
@@ -22,34 +20,36 @@
     bottom: 0;
     left: 0;
     margin: 0 auto; /* Center the content horizontally */
-
-    
 }
-        body {
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
-            color: #333;
-            width: 50vh;
-           
-        }
+body {
+    background-image: url('wood.png'); /* Replace 'your-image-url.jpg' with the URL of your background image */
+    background-size: 380px 900px; /* Set custom width and height for the background image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-attachment: fixed; /* Make the background image fixed */
+    font-family: Arial, sans-serif;
+    color: #333;
+    width: 50vh;
+}
+
+
+
 
         /* Styles for the tabs and tab buttons */
       
 
        /* Styles for the tabs and tab buttons */
 .tab-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Add background color with transparency */
+  
+    background-size: cover; /* Cover the entire container with the background image */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent image repetition */
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1; /* Ensure the buttons are above the wood image */
+    z-index: 1; /* Ensure the buttons are above the background image */
 }
 
 .tab-button {
@@ -96,18 +96,21 @@
         }
 
         /* Styles for individual meal blocks (square) */
-        .meal-block {
-            width: calc(25% - 10px); /* Increase the width to 25% */
-            max-width: 200px; /* Set a maximum width for meal blocks */
-            height: 300px; /* Set the desired height */
-            overflow: hidden; /* Crop overflowing content */
-            border: 1px solid #000; /* Add a black border */
-            border-radius: 4px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+      /* Styles for individual meal blocks (square) */
+.meal-block {
+    width: calc(33.33% - 10px); /* Adjust the width as needed */
+    height: calc(33.33% - 10px); /* Set the desired height */
+    padding: 0; /* Remove padding to eliminate white spaces */
+    border: 1px solid #000; /* Add a black border */
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ... Other CSS rules remain the same ... */
+
 
         /* Style for the meal image container */
         .meal-image-container {
@@ -531,17 +534,66 @@
             color: white;
         }
 
+
         .remove-button-text {
             font-size: 16px;
             line-height: 0;
         }
+/* Styles for "Tab 3" (Drinks) */
+/* Styles for meal blocks in "Tab 3" */
+#tab3 .meals-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* Center the meals horizontally */
+}
 
+#tab3 .meal-block {
+    width: calc(100% - 10px); /* Increase the width to 25% */
+    height: calc(300% - 10px); /* Set the desired height */
+    padding: 0; /* Remove padding to eliminate white spaces */
+    border: 1px solid #000; /* Add a black border */
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#tab3 .meal-image-container img {
+    max-width: 100%; /* Make sure the image doesn't exceed the container width */
+    max-height: 100%; /* Make sure the image doesn't exceed the container height */
+}
+
+#tab3 .meal-name,
+#tab3 .meal-price {
+    margin: 5px;
+}
+
+#tab3 .add-to-cart {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.page-title {
+            text-align: center;
+            font-size: 36px;
+            margin-top: 20px; /* Adjust the margin as needed */
+            color: rgb(255, 106, 0);
+        }
     </style>
 </head>
 <body>
+    
     <!-- Add these attributes to the <body> tag -->
 <body onmousedown="handleTouchStart(event)" ontouchstart="handleTouchStart(event)" onmousemove="handleTouchMove(event)" ontouchmove="handleTouchMove(event)" onmouseup="handleTouchEnd()" ontouchend="handleTouchEnd()">
 
+        <!-- Page title -->
+        <h1 class="page-title">Tsalananga</h1>
 <!-- ... (Your previous HTML code remains unchanged) ... -->
 <!-- Tab buttons -->
 <button class="tab-button" onclick="openTab('tab1')">Tab 1</button>
@@ -871,7 +923,7 @@
         <div class="content-outline">
             <div class="meal-block">
                 <div class="meal-image-container">
-                    <img src="score energy.png" alt="Meal 11" class="meal-image">
+                    <img src="score energy.png" alt="Meal 1" class="meal-image">
                 </div>
                 <div class="meal-name">Score Energy</div>
                 <div class="meal-price">R15.00</div>
@@ -879,7 +931,7 @@
             </div>
             <div class="meal-block">
                 <div class="meal-image-container">
-                    <img src="dragon energy.png" alt="Meal 11" class="meal-image">
+                    <img src="" alt="Meal 11" class="meal-image">
                 </div>
                 <div class="meal-name">Dragon Energy</div>
                 <div class="meal-price">R15.00</div>
@@ -998,6 +1050,17 @@
     </div>
 </div>
 <script>
+    function copyCartItems() {
+        const cartItemsText = cart.map(item => `${item.name} x${item.quantity}`).join('\n');
+        const textArea = document.createElement('textarea');
+        textArea.value = cartItemsText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Cart items copied to clipboard!');
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
     // Reset cart items
     const cartItemsContainer = document.getElementById('cart-items');
@@ -1079,8 +1142,9 @@ function addToCart(itemName, itemPrice) {
     displayCart();
 }
 
+
 // Function to remove an item from the cart
-  function removeFromCart(itemName) {
+function removeFromCart(itemName) {
             const itemIndex = cart.findIndex((item) => item.name === itemName);
             if (itemIndex !== -1) {
                 cart.splice(itemIndex, 1);
