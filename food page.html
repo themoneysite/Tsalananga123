@@ -585,6 +585,22 @@ body {
             margin-top: 20px; /* Adjust the margin as needed */
             color: rgb(255, 106, 0);
         }
+        /* Style for the meal details */
+.meal-details {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Style for "In Stock" block */
+.in-stock {
+    font-weight: bold;
+}
+
+/* Style for the stock count */
+.stock-count {
+    color: green; /* You can adjust the color as needed */
+}
+
     </style>
 </head>
 <body>
@@ -618,6 +634,7 @@ body {
                     </div>
                     <div class="meal-name">Plain Burger</div>
                     <div class="meal-price">R30.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Plain Burger', 30.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -626,6 +643,7 @@ body {
                     </div>
                     <div class="meal-name">Plain Burger with Chips</div>
                     <div class="meal-price">R40.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Plain Burger with Chips', 40.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -634,6 +652,7 @@ body {
                     </div>
                     <div class="meal-name">Double Burger</div>
                     <div class="meal-price">R40.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Double Burger', 40.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -642,6 +661,7 @@ body {
                     </div>
                     <div class="meal-name">Double Burger with Chips</div>
                     <div class="meal-price">R50.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Double Burger', 50.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -650,6 +670,7 @@ body {
                     </div>
                     <div class="meal-name">Small Chips</div>
                     <div class="meal-price">R20.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Small Chips', 20.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -658,6 +679,7 @@ body {
                     </div>
                     <div class="meal-name">Large Chips</div>
                     <div class="meal-price">R30.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('sbbxbvxchzhszzhzhzxbxz', 10.99)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -666,6 +688,7 @@ body {
                     </div>
                     <div class="meal-name">Plain Roll</div>
                     <div class="meal-price">R3.50</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Plain Roll', 3.50)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -674,6 +697,7 @@ body {
                     </div>
                     <div class="meal-name">Hot Dog</div>
                     <div class="meal-price">R25.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Hot Dog', 25.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -682,6 +706,7 @@ body {
                     </div>
                     <div class="meal-name">Boerewors Roll</div>
                     <div class="meal-price">R30.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Boerewors Roll', 30.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -690,6 +715,7 @@ body {
                     </div>
                     <div class="meal-name">Russian and Chips</div>
                     <div class="meal-price">R35.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Russian and Chips', 35.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -698,6 +724,7 @@ body {
                     </div>
                     <div class="meal-name">Russian only</div>
                     <div class="meal-price">R15.00</div>
+                     <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Russian only', 15.00)">Add to Cart</button>
 
                 </div>
@@ -731,7 +758,7 @@ body {
                         </label>
                     </div>
 
-
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCart('Beef Stew', 50.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -752,7 +779,7 @@ body {
                         </label>
                     </div>
 
-
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCart('Hard body', 50.00)">Add to Cart</button>
                 </div>
 
@@ -774,7 +801,7 @@ body {
                             <input type="radio" name="options-Hlakwana" value="Rice" onclick="selectOption('Rice')">Rice
                         </label>
                     </div>
-
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCart('Hlakwana', 50.00)">Add to Cart</button>
                 </div>
 
@@ -795,7 +822,7 @@ body {
                         <label>
                             <input type="radio" name="options-NamayaHlogo" value="Rice" onclick="selectOption('Rice')">Rice
                         </label>
-                    </div>
+                    </div><p class="in-stock">In Stock: <span class="stock-count">20</span></p>
 
                     <button class="add-to-cart" onclick="addToCart('Nama ya Hlogo', 50.00)">Add to Cart</button>
                 </div>
@@ -817,7 +844,7 @@ body {
                         </label>
                     </div>
 
-
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCart('Steak', 50.00)">Add to Cart</button>
                 </div>
 
@@ -845,7 +872,7 @@ body {
                     
                 </div>
 
-
+                <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCart('Wings', 50.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -868,6 +895,7 @@ body {
                             <input type="radio" name="options-TheBest" value="Chips" onclick="selectOption('Chips')">Chips
                         </label>
                     </div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCart('The Best', 50.00)">Add to Cart</button>
                 </div>
                 
@@ -890,6 +918,7 @@ body {
                             <input type="radio" name="options-Fish" value="Salad" onclick="selectOption('Salad')"> Salad
                         </label>
                     </div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCart('Fish', 50.00)">Add to Cart</button>
                 </div>
                 
@@ -899,7 +928,7 @@ body {
                     </div>
                     <div class="meal-name">Pap only</div>
                     <div class="meal-price">R10.00</div>
-                    
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Pap', 10.00)">Add to Cart</button>
                 </div>
                 <div class="meal-block">
@@ -908,6 +937,7 @@ body {
                     </div>
                     <div class="meal-name">Dumbling (x5)</div>
                     <div class="meal-price">R5.00</div>
+                    <p class="in-stock">In Stock: <span class="stock-count">20</span></p>
                     <button class="add-to-cart" onclick="addToCartWithoutOption('Dumbling(x5)', 5.00)">Add to Cart</button>
                 </div>
                 <!-- Existing meal block -->
@@ -1038,11 +1068,15 @@ body {
 
                 <!-- Add this button inside your contact tab's content -->
                 <button
-                    type="button" <!-- Change type to "button" to prevent form submission -->
-                    class="send-order-button"
-                    onclick="submitOrder()"
-                    disabled <!-- Initially disable the button -->
-                >
+                type="button" <!-- Change type to "button" to prevent form submission -->
+                class="send-order-button"
+                onclick="refreshPage()" <!-- This line links the function to the button -->
+            >
+                Refresh
+            </button>
+            
+            </button>
+            
                     Submit Order
                 </button>
             </form>
@@ -1050,6 +1084,9 @@ body {
     </div>
 </div>
 <script>
+    
+    
+ 
     function copyCartItems() {
         const cartItemsText = cart.map(item => `${item.name} x${item.quantity}`).join('\n');
         const textArea = document.createElement('textarea');
@@ -1111,6 +1148,17 @@ function addToCartWithoutOption(itemName, itemPrice) {
 }
 
 
+// Define a handleTouchEnd function
+function handleTouchEnd(event) {
+    // Your touch end handling code here
+    // This function is typically used to handle the touchend event.
+}
+
+// Attach the handleTouchEnd function to the touchend event
+document.addEventListener('touchend', handleTouchEnd);
+
+
+// Function to add a meal without options to the cart
 // Function to add an item to the cart
 function addToCart(itemName, itemPrice) {
     if (selectedOption === null) {
@@ -1140,17 +1188,55 @@ function addToCart(itemName, itemPrice) {
 
     // Update the cart display
     displayCart();
+
+    // Store the updated cart in local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Function to add a meal without options to the cart
+function addToCartWithoutOption(itemName, itemPrice) {
+    const item = {
+        name: itemName,
+        price: itemPrice,
+        quantity: 1
+    };
+
+    // Check if the item is already in the cart
+    const existingItem = cart.find((cartItem) => cartItem.name === itemName);
+
+    if (existingItem) {
+        // If the item is already in the cart, increase its quantity
+        existingItem.quantity++;
+    } else {
+        // If it's not in the cart, add it
+        cart.push(item);
+    }
+
+    // Update the cart display
+    displayCart();
+
+    // Store the updated cart in local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 
-// Function to remove an item from the cart
+
+// Function to remove an item from the cart and local storage
 function removeFromCart(itemName) {
-            const itemIndex = cart.findIndex((item) => item.name === itemName);
-            if (itemIndex !== -1) {
-                cart.splice(itemIndex, 1);
-                displayCart();
-            }
-        }
+    const itemIndex = cart.findIndex((item) => item.name === itemName);
+    if (itemIndex !== -1) {
+        cart.splice(itemIndex, 1);
+        displayCart();
+
+        // Remove the item from local storage
+        updateLocalStorage();
+    }
+}
+
+// Function to update the local storage with the current cart contents
+function updateLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 // Function to display the cart contents
 function displayCart() {
@@ -1236,34 +1322,37 @@ function updateQuantity(item, event) {
 }
 
 // Function to decrease the quantity of an item in the cart
+// Function to decrease the quantity of an item in the cart and update local storage
 function decreaseQuantity(item) {
     if (item.quantity > 1) {
         item.quantity--;
-        displayCart();
+        updateLocalStorage(); // Update local storage
+        displayCart(); // Update the cart display
     }
 }
 
-// Function to increase the quantity of an item in the cart
+// Function to increase the quantity of an item in the cart and update local storage
 function increaseQuantity(item) {
     item.quantity++;
-    displayCart();
-}
-
-// Function to send the order
-function sendOrder() {
-    const contactInfo = document.getElementById('phone').value;
-    if (contactInfo.trim() === "") {
-        alert('Please enter your contact information (phone number) before submitting the order.');
-        return;
-    }
-
-    // Here, you can handle the order submission, e.g., send the order details and contactInfo to a server.
-    // Replace this with your actual order submission logic.
-
-    alert('Order sent! Contact Information: ' + contactInfo);
-    cart = []; // Clear the cart
+    updateLocalStorage(); // Update local storage
     displayCart(); // Update the cart display
 }
+
+
+// Function to send the order
+// Function to send the order and refresh the page
+// Function to send the order and refresh the page
+
+// Function to submit the order and refresh the page
+function submitOrderAndRefresh() {
+    // Your order submission logic here (if needed)
+
+    // Reload the page to refresh it
+    location.reload();
+}
+
+
+
 
 // Open the first tab by default
 openTab('tab1');
