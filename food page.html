@@ -1002,13 +1002,8 @@ body {
 <!-- Add this button inside your cart tab's content -->
 
 
-<!-- Contact information form -->
-<form
-  action="https://formspree.io/f/xjvqaadj"
-  method="POST"
->
-
-<div class="form-field">
+<form action="https://formspree.io/f/xjvqaadj" method="POST">
+    <div class="form-field">
     <label for="phone">Phone Number:</label>
     <input type="tel" id="phone" name="phone" pattern="[0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
 </div>
@@ -1021,19 +1016,13 @@ body {
 <div class="form-field">
     <label for="cart-items-text">Copy and Paste Your Cart Items to confirm your order:</label>
     <textarea id="cart-items-text" name="cart-items-text" rows="4" cols="50"></textarea>
+    <!-- your other form fields go here -->
+    
+    <button type="submit">Send</button>
+  </form>
+  
+
 </div>
-
-
-
-<!-- Add this button inside your cart tab's content -->
-
-
-<!-- Add this button inside your cart tab's content -->
-<button type="button" class="send-order-button" onclick="submitOrderAndRefresh()">Submit Order</button>
-</form>
-
-
-
 
         </div>
     </div>
