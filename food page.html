@@ -37,6 +37,13 @@
             border-bottom: 1px solid #ccc;
             padding: 10px;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-item img {
+            max-width: 100px;
+            margin-right: 10px;
         }
 
         .options {
@@ -74,18 +81,20 @@
         <h2>Menu</h2>
 
         <div class="menu-item" id="espresso">
-            <h3>Espresso</h3>
-            <p>Strong and rich coffee brewed by forcing a small amount of nearly boiling water through finely-ground coffee beans.</p>
-            <div class="options">
-                <label>
-                    <input type="checkbox" name="sugar_espresso"> Sugar
-                </label>
-                <label>
-                    <input type="checkbox" name="milk_espresso"> Milk
-                </label>
+            <img src="espresso.png" alt="Espresso">
+            <div>                <h3>Espresso</h3>
+                <p>Strong and rich coffee brewed by forcing a small amount of nearly boiling water through finely-ground coffee beans.</p>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="sugar_espresso"> Sugar
+                    </label>
+                    <label>
+                        <input type="checkbox" name="milk_espresso"> Milk
+                    </label>
+                </div>
+                <p>Price: $2.50</p>
+                <button onclick="addToCart('Espresso', 2.50, 'sugar_espresso', 'milk_espresso')">Add to Cart</button>
             </div>
-            <p>Price: $2.50</p>
-            <button onclick="addToCart('Espresso', 2.50, 'sugar_espresso', 'milk_espresso')">Add to Cart</button>
         </div>
 
         <!-- Add more items as needed -->
@@ -120,7 +129,7 @@
                 </div>
                 <div>
                     <label for="time-${itemName}">Time:</label>
-                    <input type="time" id="time-${itemName}" name="time-${itemName}" value="09:00">
+                    <input type="time" id="time-${itemName}" name="time-${itemName}" value="09:00" disabled>
                     <button onclick="removeFromCart(this, ${itemTotal})">Remove</button>
                 </div>
             `;
@@ -142,4 +151,3 @@
 
 </body>
 </html>
-
