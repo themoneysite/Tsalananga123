@@ -130,7 +130,7 @@
         &copy; 2023 Coffee Shop
     </footer>
 
-    <script>
+   <script>
         let totalAmount = 0;
 
         function addToCart(itemName, price, sugarCheckbox, milkCheckbox) {
@@ -144,11 +144,9 @@
 
             cartItem.innerHTML = `
                 <div>
-                    <strong>${itemName}</strong> - ${sugar} ${milk} - R${price.toFixed(2)}
+                    <strong>${itemName}</strong> - ${sugar} ${milk} - €${price.toFixed(2)}
                 </div>
                 <div>
-                    <label for="time-${itemName}">Time:</label>
-                    <input type="time" id="time-${itemName}" name="time-${itemName}" value="09:00">
                     <button onclick="removeFromCart(this, ${itemTotal})">Remove</button>
                 </div>
             `;
