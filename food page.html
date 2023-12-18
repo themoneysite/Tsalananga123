@@ -80,6 +80,19 @@
         .time-block {
             margin-top: 10px;
         }
+        #order-button {
+            background-color: #56382a;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #order-button:hover {
+            background-color: #452c1d;
+        }
     </style>
 </head>
 <body>
@@ -155,6 +168,7 @@
             <label for="delivery-time">Receive Time:</label>
             <input type="time" id="delivery-time" name="delivery-time" value="00:00">
         </div>
+        <button id="order-button" onclick="placeOrder()">Order Now</button>
     </section>
 
     <footer>
@@ -194,6 +208,10 @@
 
         function updateTotalAmount() {
             document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+        }
+        function placeOrder() {
+            // Implement order placement logic here
+            alert('Order placed successfully!');
         }
     </script>
 
