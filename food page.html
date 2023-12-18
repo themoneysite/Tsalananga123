@@ -88,10 +88,10 @@
         <h2>Menu</h2>
 
         <div class="menu-item" id="espresso">
-            <img src="espresso.jpg" alt="Espresso">
+            <img src="espresso.png" alt="Espresso">
             <div>
                 <h3>Espresso</h3>
-                <p>Strong and rich coffee brewed by forcing a small amount of nearly boiling water through finely-ground coffee beans.</p>
+                <p>.</p>
                 <div class="options">
                     <label>
                         <input type="checkbox" name="sugar_espresso"> Sugar
@@ -100,8 +100,8 @@
                         <input type="checkbox" name="milk_espresso"> Milk
                     </label>
                 </div>
-                <p>Price: €2.50</p>
-                <button onclick="addToCart('Espresso', 2.50, 'sugar_espresso', 'milk_espresso')">Add to Cart</button>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Espresso', 15.00, 'sugar_espresso', 'milk_espresso')">Add to Cart</button>
             </div>
         </div>
 
@@ -112,10 +112,10 @@
     <section class="cart-section" id="cart">
         <h2>Shopping Cart</h2>
         <div id="cart-items"></div>
-        <p>Total Amount: €<span id="total-amount">0.00</span></p>
+        <p>Total Amount: R<span id="total-amount">0.00</span></p>
         <div class="time-block">
             <label for="delivery-time">Delivery Time:</label>
-            <input type="time" id="delivery-time" name="delivery-time" value="09:00">
+            <input type="time" id="delivery-time" name="delivery-time" value="00:00">
         </div>
     </section>
 
@@ -137,7 +137,7 @@
 
             cartItem.innerHTML = `
                 <div>
-                    <strong>${itemName}</strong> - ${sugar} ${milk} - €${price.toFixed(2)}
+                    <strong>${itemName}</strong> - ${sugar} ${milk} - R${price.toFixed(2)}
                 </div>
                 <div>
                     <button onclick="removeFromCart(this, ${itemTotal})">Remove</button>
