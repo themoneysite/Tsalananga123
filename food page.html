@@ -108,7 +108,7 @@
             <img src="espresso.png" alt="Espresso">
             <div>
                 <h3>Espresso</h3>
-                <p></p>
+                <p>.</p>
                 <div class="options">
                     <label>
                         <input type="checkbox" name="sugar_espresso"> Sugar
@@ -125,7 +125,7 @@
             <img src="cappuccino.png" alt="Cappuccino">
             <div>
                 <h3>Cappuccino</h3>
-                <p></p>
+                <p>.</p>
                 <div class="options">
                     <label>
                         <input type="checkbox" name="sugar_cappuccino"> Sugar
@@ -142,7 +142,7 @@
             <img src="americano.png" alt="Americano">
             <div>
                 <h3>Americano</h3>
-                <p></p>
+                <p>.</p>
                 <div class="options">
                     <label>
                         <input type="checkbox" name="sugar_americano"> Sugar
@@ -172,7 +172,7 @@
     </section>
 
     <footer>
-        &copy; Sebastiaan Julius Rothmann
+        &copy; 2023 Coffee Shop
     </footer>
 
     <script>
@@ -213,6 +213,89 @@
             // Implement order placement logic here
             alert('Order placed successfully!');
         }
+        const express = require('express');
+const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.json());
+app.use(cors());
+
+// Store the cart items globally to access them when sending an email
+let cartItems = [];
+
+app.post('/send-email', (req, res) => {
+  const { name, phone } = req.body;
+
+  // Use nodemailer to send an email
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'camoenian3009@gmail.com', // Replace with your email
+      pass: 'your_password',        // Replace with your password
+    },
+  });
+
+  const mailOptions = {
+    from: 'your_email@gmail.com',
+    to: 'camoenian3009@gmail.com',
+    subject: 'New Order',
+    text: `Customer Name: ${name}\nPhone Number: ${phone}\nOrdered Items: ${formatCartItems()}\nTotal Price: $${getTotalPrice()}`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    } else {
+      console.log('Email sent: ' + info.response);
+
+      // Clear the cart after placing the order
+      cartItems = [];
+      res.status(200).send('Email sent successfully');
+    }
+  });
+});
+
+app.post('/add-to-cart', (req, res) => {
+  const { itemName, price, sugarCheckbox, milkCheckbox } = req.body;
+  const sugar = req.body[sugarCheckbox] ? 'Sugar' : '';
+  const milk = req.body[milkCheckbox] ? 'Milk' : '';
+  const quantity = 1;
+  const itemTotal = price * quantity;
+
+  cartItems.push({
+    itemName,
+    sugar,
+    milk,
+    price,
+    quantity,
+    itemTotal,
+  });
+
+  res.status(200).send('Item added to cart successfully');
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+function formatCartItems() {
+  return cartItems
+    .map(
+      (item) =>
+        `${item.itemName} - ${item.sugar} ${item.milk} - $${item.price.toFixed(2)} x ${item.quantity}`
+    )
+    .join('\n');
+}
+
+function getTotalPrice() {
+  return cartItems.reduce((total, item) => total + item.itemTotal, 0).toFixed(2);
+}
+
     </script>
 
 </body>
