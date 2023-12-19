@@ -18,7 +18,8 @@
             padding: 10px;
             text-align: center;
         }
-         header img {
+
+        header img {
             max-width: 50px;
             margin-right: 10px;
         }
@@ -32,7 +33,6 @@
             color: #fff;
             text-align: center;
             padding: 10px;
-            
             bottom: 0;
             width: 100%;
         }
@@ -80,7 +80,10 @@
         .time-block {
             margin-top: 10px;
         }
-        #order-button {
+
+        
+
+        #print-button {
             background-color: #56382a;
             color: #fff;
             padding: 10px 20px;
@@ -90,17 +93,25 @@
             font-size: 16px;
         }
 
-        #order-button:hover {
+        #print-button:hover {
             background-color: #452c1d;
+        }
+
+        #order-text {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            padding: 10px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
 
-   <header>
-       
+    <header>
         <h1>Coffee Shop<img src="Coffee bean.png" alt="Coffee Icon"></h1>
     </header>
+
     <section>
         <h2>Fresh Just For You</h2>
 
@@ -162,30 +173,17 @@
 
     <section class="cart-section" id="cart">
         <h2>Shopping Cart</h2>
-        <!-- Form for order submission -->
-        <form action="https://formspree.io/f/xyyrgjdq" method="POST">
-            <!-- Your input fields for order details -->
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            
-            <!-- Hidden field for the order summary -->
-            <input type="hidden" name="order_summary" id="order-summary">
-
-            <!-- Your existing delivery time input field -->
-            <div class="time-block">
-                <label for="delivery-time">Receive Time:</label>
-                <input type="time" id="delivery-time" name="delivery-time" value="00:00">
-            </div>
-            
-            <!-- The button to submit the form -->
-            <button id="order-button" type="submit" onclick="placeOrder()">Order Now</button>
-        </form>
-        <!-- End of the form -->
-
-        <!-- Your existing cart content -->
         <div id="cart-items"></div>
         <p>Total Amount: R<span id="total-amount">0.00</span></p>
+        <div class="time-block">
+            <label for="delivery-time">Receive Time:</label>
+            <input type="time" id="delivery-time" name="delivery-time" value="00:00">
+        </div>
+       
+        <button id="print-button" onclick="printOrder()">Print Order</button>
+        <textarea id="order-text" placeholder="Your order details will appear here"></textarea>
     </section>
+
     <footer>
         &copy; 2023 Coffee Shop
     </footer>
@@ -224,11 +222,23 @@
         function updateTotalAmount() {
             document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
         }
-        function placeOrder() {
-            // Implement order placement logic here
-            alert('Order placed successfully!');
-        }
+
         
+
+        function printOrder() {
+            const cartItems = document.querySelectorAll('.cart-item');
+            const deliveryTime = document.getElementById('delivery-time').value;
+            let orderText = `Order Details:\n`;
+
+            cartItems.forEach(item => {
+                orderText += `${item.textContent.trim()}\n`;
+            });
+
+            orderText += `Total Amount: R${totalAmount.toFixed(2)}\n`;
+            orderText += `Scheduled Time: ${deliveryTime}\n`;
+
+            document.getElementById('order-text').value = orderText;
+        }
     </script>
 
 </body>
