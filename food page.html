@@ -80,7 +80,19 @@
         .time-block {
             margin-top: 10px;
         }
+        #order-button {
+            background-color: #56382a;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
+        #order-button:hover {
+            background-color: #452c1d;
+        }
         
 
         #print-button {
@@ -182,6 +194,7 @@
        
         <button id="print-button" onclick="printOrder()">Print Order</button>
         <textarea id="order-text" placeholder="Your order details will appear here"></textarea>
+        <button id="order-button" onclick="placeOrder()">Order Now</button>
     </section>
 
     <footer>
@@ -224,7 +237,30 @@
         }
 
         
+        function placeOrder() {
+            // Get the order details from the textarea
+            const orderDetails = document.getElementById('order-text').value;
 
+            // Make a POST request to Formspree to send the email
+            fetch('https://formspree.io/f/xyyrgjdq', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ orderDetails }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                alert('Order placed successfully!');
+                // You can clear the cart or perform any other actions after a successful order
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                alert('Failed to place the order. Please try again later.');
+            });
+        }
         function printOrder() {
             const cartItems = document.querySelectorAll('.cart-item');
             const deliveryTime = document.getElementById('delivery-time').value;
