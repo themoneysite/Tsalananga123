@@ -59,70 +59,130 @@
         }
 
         .cart-section {
-            background-color: #fff;
-            padding: 20px;
-            margin-top: 20px;
-        }
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        .cart-item {
-            border-bottom: 1px solid #ccc;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap; /* Allow items to wrap to the next line */
-        }
+.cart-item {
+    border-bottom: 1px solid #ccc;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .cart-item label {
-            margin-right: 10px;
-        }
+.cart-item label {
+    margin-right: 10px;
+}
 
-        .time-block {
-            margin-top: 10px;
-        }
-        #order-button {
-            background-color: #56382a;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+.time-block {
+    margin-top: 15px;
+}
 
-        #order-button:hover {
-            background-color: #452c1d;
-        }
-        
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
 
-        #print-button {
-            background-color: #56382a;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+button {
+    background-color: #56382a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
 
-        #print-button:hover {
-            background-color: #452c1d;
-        }
+button:hover {
+    background-color: #452c1d;
+}
 
-        #order-text {
-            width: 100%;
-            height: 100px;
-            margin-top: 10px;
-            padding: 10px;
-            box-sizing: border-box;
-        }
+#order-text {
+    width: 100%;
+    height: 120px;
+    margin-top: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* New styles for the shopping cart */
+#cart {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#cart h2 {
+    color: #56382a;
+    border-bottom: 2px solid #56382a;
+    padding-bottom: 10px;
+}
+
+#cart-items {
+    margin-top: 15px;
+}
+
+#total-amount {
+    color: #56382a;
+    font-weight: bold;
+}
+
+#delivery-time,
+#clear-button,
+#order-button {
+    background-color: #56382a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#delivery-time:hover,
+#clear-button:hover,
+#order-button:hover {
+    background-color: #452c1d;
+}
+#cart-button {
+    background-color: #56382a;
+    color: #fff;
+    padding: 10px 20px;
+    border: 2px solid #452c1d; /* Darker border color */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#cart-button:hover {
+    background-color: #452c1d;
+    border-color: #341f10; /* Darker border color on hover */
+}
     </style>
 </head>
 <body>
 
     <header>
         <h1>Coffee Shop<img src="Coffee bean.png" alt="Coffee Icon"></h1>
+        <button id="cart-button" onclick="navigateToCart()">View Cart</button>
     </header>
+    </header>
+    
 
     <section>
         <h2>Fresh Just For You</h2>
@@ -204,6 +264,10 @@
     </footer>
 
     <script>
+          // Add this script for the shopping cart button
+          function navigateToCart() {
+            document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+        }
         let totalAmount = 0;
         let orderDetails = [];
         let deliveryTime = '00:00'; // Default delivery time
