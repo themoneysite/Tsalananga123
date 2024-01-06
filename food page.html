@@ -35,7 +35,8 @@
     .menu-item {
         border: 1px solid #ddd;
         padding: 15px;
-        width: 250px;
+        width: 100%;
+        max-width: 300px;
         border-radius: 8px;
         overflow: hidden;
     }
@@ -83,6 +84,28 @@
 
     .cart-section {
         width: 100%;
+    }
+
+    footer {
+        background-color: #56382a;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+    }
+
+    @media only screen and (min-width: 600px) {
+        .menu-item {
+            width: 48%;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .menu-item {
+            width: 31%;
+        }
     }
 </style>
 </head>
@@ -181,10 +204,11 @@
     &copy; 2023 Coffee Shop
 </footer>
 <script>
+     function navigateToCart() {
+            document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+        }
     // Add this script for the shopping cart button
-    function navigateToCart() {
-      document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
-  }
+   
   let totalAmount = 0;
   let orderDetails = [];
   let deliveryTime = '00:00'; // Default delivery time
