@@ -1,33 +1,131 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Local Storage Data</title>
-</head>
-<body>
-    <h1>Local Storage Data</h1>
-    <p>Last Button Clicked:</p>
-    <p id="lastButtonClick"></p>
-    <p>Click Count:</p>
-    <p id="clickCount"></p>
+ <script>
+          // Add this script for the shopping cart button
+          function navigateToCart() {
+            document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+        }
+        let totalAmount = 0;
+        let orderDetails = [];
+        let deliveryTime = '00:00'; // Default delivery time
 
-    <script>
-        // Function to retrieve and display the last button clicked
-        function displayLastButtonClick() {
-            const lastButtonClickElement = document.getElementById("lastButtonClick");
-            const lastButtonClicked = localStorage.getItem("lastButtonClicked") || "No button clicked yet";
-            lastButtonClickElement.textContent = lastButtonClicked;
+        function addToCart(itemName, price, sugarCheckbox, milkCheckbox) {
+            const sugar = document.querySelector(`input[name="${sugarCheckbox}"]`).checked ? 'Sugar' : '';
+            const milk = document.querySelector(`input[name="${milkCheckbox}"]`).checked ? 'Milk' : '';
+
+            const quantity = 1;
+            const itemTotal = price * quantity;
+            totalAmount += itemTotal;
+
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+
+            const itemDetails = `${itemName} - ${sugar} ${milk} - R${price.toFixed(2)}`;
+            orderDetails.push(itemDetails);
+
+            cartItem.innerHTML = `
+                <div>
+                    <strong>${itemName}</strong> - ${sugar} ${milk} - R${price.toFixed(2)}
+                </div>
+                <div>
+                    <button onclick="removeFromCart(this, ${itemTotal}, '${itemDetails}')">Remove</button>
+                </div>
+            `;
+            document.getElementById('cart-items').appendChild(cartItem);
+            updateTotalAmount();
+            updateOrderText();
         }
 
-        // Function to retrieve and display the click count
-        function displayClickCount() {
-            const clickCountElement = document.getElementById("clickCount");
-            const clickCount = localStorage.getItem("clickCount") || 0;
-            clickCountElement.textContent = clickCount + " clicks";
+        function removeFromCart(button, itemTotal, itemDetails) {
+            const cartItem = button.parentElement.parentElement;
+            cartItem.remove();
+            totalAmount -= itemTotal;
+            updateTotalAmount();
+
+            // Remove the corresponding item details from the orderDetails array
+            const index = orderDetails.indexOf(itemDetails);
+            if (index !== -1) {
+                orderDetails.splice(index, 1);
+                updateOrderText();
+            }
         }
 
-        // Call the display functions on page load
-        displayLastButtonClick();
-        displayClickCount();
+        function updateTotalAmount() {
+            document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+        }
+
+        function updateOrderText() {
+            const completeOrderDetails = orderDetails.join('\n') +
+                `\nTotal Amount: R${totalAmount.toFixed(2)}\nScheduled Time: ${formatDeliveryTime(deliveryTime)}`;
+            document.getElementById('order-text').value = completeOrderDetails;
+        }
+
+        function placeOrder() {
+            // Make a POST request to Formspree to send the email
+            fetch('https://formspree.io/your-email-address', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ orderDetails: document.getElementById('order-text').value }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                alert('Order placed successfully!');
+                // You can clear the cart or perform any other actions after a successful order
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                alert('Failed to place the order. Please try again later.');
+            });
+        }
+
+        function printOrder() {
+            // Your printOrder function here
+        }
+
+        // Periodically update the live time display
+        setInterval(() => {
+            document.getElementById('live-time').textContent = `Live Time: ${getCurrentTime()}`;
+        }, 1000);
+
+        // Function to format delivery time to include AM/PM
+        function formatDeliveryTime(time) {
+            const parts = time.split(':');
+            const hours = parseInt(parts[0]);
+            const minutes = parts[1];
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+            return `${formattedHours}:${minutes} ${ampm}`;
+        }
+
+        // Function to get the current time
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+            return `${formattedHours}:${padZero(minutes)}:${padZero(seconds)} ${ampm}`;
+        }
+
+        // Function to pad zero for single-digit minutes and seconds
+        function padZero(value) {
+            return value < 10 ? `0${value}` : value;
+        }
+
+        function setDeliveryTime() {
+            deliveryTime = document.getElementById('delivery-time').value;
+            updateOrderText();
+        }
+
+        function clearOrderText() {
+            document.getElementById('order-text').value = '';
+            // Clear the order details array and reset total amount and delivery time
+            orderDetails = [];
+            totalAmount = 0;
+            deliveryTime = '00:00';
+            updateTotalAmount();
+        }
     </script>
-</body>
-</html>
