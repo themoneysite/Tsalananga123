@@ -1,337 +1,417 @@
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #fefefe;
-        color: #333;
-    }
-
-    header {
-        background-color: #56382a;
-        color: #fff;
-        padding: 15px 0;
-        text-align: center;
-    }
-
-    header h1 {
-        margin: 0;
-        font-size: 24px;
-    }
-
-    header img {
-        max-width: 40px;
-        margin-right: 10px;
-    }
-
-    section {
-        padding: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-    }
-
-    .menu-item {
-        border: 1px solid #ddd;
-        padding: 15px;
-        width: 100%;
-        max-width: 300px;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .menu-item img {
-        max-width: 100%;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-
-    .menu-item h3 {
-        margin-top: 0;
-    }
-
-    .options {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-    }
-
-    .options label {
-        margin-right: 10px;
-    }
-
-    .price {
-        margin-top: 10px;
-        font-weight: bold;
-        color: #56382a;
-    }
-
-    .button {
-        background-color: #56382a;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-    }
-
-    .button:hover {
-        background-color: #452c1d;
-    }
-
-    .cart-section {
-        width: 100%;
-    }
-
-    footer {
-        background-color: #56382a;
-        color: #fff;
-        text-align: center;
-        padding: 10px;
-        width: 100%;
-        position: fixed;
-        bottom: 0;
-    }
-
-    @media only screen and (min-width: 600px) {
-        .menu-item {
-            width: 48%;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Bean</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-    }
 
-    @media only screen and (min-width: 768px) {
-        .menu-item {
-            width: 31%;
+        header {
+            background-color: #56382a;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
         }
-    }
-</style>
+
+        header img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #56382a;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .menu-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-item img {
+            max-width: 230px;
+            max-height: 230px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .cart-section {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+    border-bottom: 1px solid #ccc;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item label {
+    margin-right: 10px;
+}
+
+.time-block {
+    margin-top: 15px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    background-color: #56382a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #452c1d;
+}
+
+#order-text {
+    width: 100%;
+    height: 120px;
+    margin-top: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* New styles for the shopping cart */
+#cart {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#cart h2 {
+    color: #56382a;
+    border-bottom: 2px solid #56382a;
+    padding-bottom: 10px;
+}
+
+#cart-items {
+    margin-top: 15px;
+}
+
+#total-amount {
+    color: #56382a;
+    font-weight: bold;
+}
+
+#delivery-time,
+#clear-button,
+#order-button {
+    background-color: #56382a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#delivery-time:hover,
+#clear-button:hover,
+#order-button:hover {
+    background-color: #452c1d;
+}
+#cart-button {
+    background-color: #56382a;
+    color: #fff;
+    padding: 10px 20px;
+    border: 2px solid #452c1d; /* Darker border color */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    top: 140px;
+    right: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#cart-button:hover {
+    background-color: #452c1d;
+    border-color: #341f10; /* Darker border color on hover */
+}
+    </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Social Bean<img src="Coffee bean.png" alt="Coffee Icon"></h1>
-    <button class="button" onclick="navigateToCart()">View Cart</button>
-</header>
+    <header>
+        <h1>Social Bean<img src="Coffee bean.png" alt="Coffee Icon"></h1>
+        <button id="cart-button" onclick="navigateToCart()">View Cart</button>
+    </header>
+    </header>
+    
 
-<section>
-    <div class="menu-item" id="espresso">
-        <img src="espresso.png" alt="Espresso">
-        <h3>Espresso</h3>
-        <p></p>
-        <div class="options">
-            <label>
-                <input type="checkbox" name="sugar_espresso"> Sugar
-            </label>
-            <label>
-                <input type="checkbox" name="milk_espresso"> Milk
-            </label>
+    <section>
+        <h2>Life Happens.
+            Coffee Helps!
+        </h2>
+
+        <div class="menu-item" id="espresso">
+            <img src="espresso.png" alt="Espresso">
+            <div>
+                <h3>Espresso</h3>
+                <p></p>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="sugar_espresso"> Sugar
+                    </label>
+                    <label>
+                        <input type="checkbox" name="milk_espresso"> Milk
+                    </label>
+                </div>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Espresso', 15.00, 'sugar_espresso', 'milk_espresso')">Add to Cart</button>
+            </div>
         </div>
-        <p class="price">Price: R15.00</p>
-        <button class="button" onclick="addToCart('Espresso', 15.00, 'sugar_espresso', 'milk_espresso')">Add to Cart</button>
-    </div>
-
-    <div class="menu-item" id="cappuccino">
-        <img src="cappuccino.png" alt="Cappuccino">
-        <h3>Cappuccino</h3>
-        <p></p>
-        <div class="options">
-            <label>
-                <input type="checkbox" name="sugar_cappuccino"> Sugar
-            </label>
-            <label>
-                <input type="checkbox" name="milk_cappuccino"> Milk
-            </label>
+        <div class="menu-item" id="cappuccino">
+            <img src="cappuccino.png" alt="Cappuccino">
+            <div>
+                <h3>Cappuccino</h3>
+                <p></p>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="sugar_cappuccino"> Sugar
+                    </label>
+                    <label>
+                        <input type="checkbox" name="milk_cappuccino"> Milk
+                    </label>
+                </div>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Cappuccino', 15.00, 'sugar_cappuccino', 'milk_cappuccino')">Add to Cart</button>
+            </div>
         </div>
-        <p class="price">Price: R15.00</p>
-        <button class="button" onclick="addToCart('Cappuccino', 15.00, 'sugar_cappuccino', 'milk_cappuccino')">Add to Cart</button>
-    </div>
-
-    <div class="menu-item" id="Americano">
-        <img src="americano.png" alt="Americano">
-        <h3>Americano</h3>
-        <p></p>
-        <div class="options">
-            <label>
-                <input type="checkbox" name="sugar_americano"> Sugar
-            </label>
-            <label>
-                <input type="checkbox" name="milk_americano"> Milk
-            </label>
+        <div class="menu-item" id="Americano">
+            <img src="americano.png" alt="Americano">
+            <div>
+                <h3>Americano</h3>
+                <p></p>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="sugar_americano"> Sugar
+                    </label>
+                    <label>
+                        <input type="checkbox" name="milk_americano"> Milk
+                    </label>
+                </div>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Americano', 15.00, 'sugar_americano', 'milk_americano')">Add to Cart</button>
+            </div>
         </div>
-        <p class="price">Price: R15.00</p>
-        <button class="button" onclick="addToCart('Americano', 15.00, 'sugar_americano', 'milk_americano')">Add to Cart</button>
-    </div>
 
-    <div class="menu-item" id="Ice Coffee">
-        <img src="espresso.png" alt="Ice Coffee">
-        <h3>Ice Coffee</h3>
-        <p></p>
-        <div class="options">
-            <label>
-                <input type="checkbox" name="sugar_ice coffee"> Sugar
-            </label>
-            <label>
-                <input type="checkbox" name="milk_ice coffee"> Milk
-            </label>
+        <div class="menu-item" id="Ice Coffee">
+            <img src="espresso.png" alt="Ice Coffee">
+            <div>
+                <h3>Ice Coffee</h3>
+                <p></p>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="sugar_ice coffee"> Sugar
+                    </label>
+                    <label>
+                        <input type="checkbox" name="milk_ice offee"> Milk
+                    </label>
+                </div>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Ice Coffee', 15.00, 'sugar_ice coffee', 'milk_ice coffee')">Add to Cart</button>
+            </div>
+        <!-- Add more items as needed -->
+
+    </section>
+
+    <section class="cart-section" id="cart">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+        <p>Total Amount: R<span id="total-amount">0.00</span></p>
+        <div class="time-block">
+            <label for="delivery-time">Receive Time:</label>
+
+            <input type="time" id="delivery-time" name="delivery-time" value="00:00">
+            <button onclick="setDeliveryTime()">Set</button>
         </div>
-        <p class="price">Price: R15.00</p>
-        <button class="button" onclick="addToCart('Ice Coffee', 15.00, 'sugar_ice coffee', 'milk_ice coffee')">Add to Cart</button>
-    </div>
+       
+        <textarea id="order-text" placeholder="Your order details will appear here"></textarea>
+        <button id="clear-button" onclick="clearOrderText()">Clear</button>
+        <button id="order-button" onclick="placeOrder()">Order Now</button>
+    </section>
 
-    <!-- Add more items as needed -->
-</section>
+    <footer>
+        &copy; 2023 Coffee Shop
+    </footer>
 
-<section class="cart-section" id="cart">
-    <h2>Shopping Cart</h2>
-    <div id="cart-items"></div>
-    <p>Total Amount: R<span id="total-amount">0.00</span></p>
-    <div class="time-block">
-        <label for="delivery-time">Receive Time:</label>
-        <input type="time" id="delivery-time" name="delivery-time" value="00:00">
-        <button class="button" onclick="setDeliveryTime()">Set</button>
-    </div>
-
-    <textarea id="order-text" placeholder="Your order details will appear here"></textarea>
-    <button class="button" onclick="clearOrderText()">Clear</button>
-    <button class="button" onclick="placeOrder()">Order Now</button>
-</section>
-
-<footer>
-    &copy; 2023 Coffee Shop
-</footer>
-<script>
-     function navigateToCart() {
+    <script>
+          // Add this script for the shopping cart button
+          function navigateToCart() {
             document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
         }
-    // Add this script for the shopping cart button
-   
-  let totalAmount = 0;
-  let orderDetails = [];
-  let deliveryTime = '00:00'; // Default delivery time
+        let totalAmount = 0;
+        let orderDetails = [];
+        let deliveryTime = '00:00'; // Default delivery time
 
-  function addToCart(itemName, price, sugarCheckbox, milkCheckbox) {
-      const sugar = document.querySelector(`input[name="${sugarCheckbox}"]`).checked ? 'Sugar' : '';
-      const milk = document.querySelector(`input[name="${milkCheckbox}"]`).checked ? 'Milk' : '';
+        function addToCart(itemName, price, sugarCheckbox, milkCheckbox) {
+            const sugar = document.querySelector(`input[name="${sugarCheckbox}"]`).checked ? 'Sugar' : '';
+            const milk = document.querySelector(`input[name="${milkCheckbox}"]`).checked ? 'Milk' : '';
 
-      const quantity = 1;
-      const itemTotal = price * quantity;
-      totalAmount += itemTotal;
+            const quantity = 1;
+            const itemTotal = price * quantity;
+            totalAmount += itemTotal;
 
-      const cartItem = document.createElement('div');
-      cartItem.className = 'cart-item';
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
 
-      const itemDetails = `${itemName} - ${sugar} ${milk} - R${price.toFixed(2)}`;
-      orderDetails.push(itemDetails);
+            const itemDetails = `${itemName} - ${sugar} ${milk} - R${price.toFixed(2)}`;
+            orderDetails.push(itemDetails);
 
-      cartItem.innerHTML = `
-          <div>
-              <strong>${itemName}</strong> - ${sugar} ${milk} - R${price.toFixed(2)}
-          </div>
-          <div>
-              <button onclick="removeFromCart(this, ${itemTotal}, '${itemDetails}')">Remove</button>
-          </div>
-      `;
-      document.getElementById('cart-items').appendChild(cartItem);
-      updateTotalAmount();
-      updateOrderText();
-  }
+            cartItem.innerHTML = `
+                <div>
+                    <strong>${itemName}</strong> - ${sugar} ${milk} - R${price.toFixed(2)}
+                </div>
+                <div>
+                    <button onclick="removeFromCart(this, ${itemTotal}, '${itemDetails}')">Remove</button>
+                </div>
+            `;
+            document.getElementById('cart-items').appendChild(cartItem);
+            updateTotalAmount();
+            updateOrderText();
+        }
 
-  function removeFromCart(button, itemTotal, itemDetails) {
-      const cartItem = button.parentElement.parentElement;
-      cartItem.remove();
-      totalAmount -= itemTotal;
-      updateTotalAmount();
+        function removeFromCart(button, itemTotal, itemDetails) {
+            const cartItem = button.parentElement.parentElement;
+            cartItem.remove();
+            totalAmount -= itemTotal;
+            updateTotalAmount();
 
-      // Remove the corresponding item details from the orderDetails array
-      const index = orderDetails.indexOf(itemDetails);
-      if (index !== -1) {
-          orderDetails.splice(index, 1);
-          updateOrderText();
-      }
-  }
+            // Remove the corresponding item details from the orderDetails array
+            const index = orderDetails.indexOf(itemDetails);
+            if (index !== -1) {
+                orderDetails.splice(index, 1);
+                updateOrderText();
+            }
+        }
 
-  function updateTotalAmount() {
-      document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
-  }
+        function updateTotalAmount() {
+            document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+        }
 
-  function updateOrderText() {
-      const completeOrderDetails = orderDetails.join('\n') +
-          `\nTotal Amount: R${totalAmount.toFixed(2)}\nScheduled Time: ${formatDeliveryTime(deliveryTime)}`;
-      document.getElementById('order-text').value = completeOrderDetails;
-  }
+        function updateOrderText() {
+            const completeOrderDetails = orderDetails.join('\n') +
+                `\nTotal Amount: R${totalAmount.toFixed(2)}\nScheduled Time: ${formatDeliveryTime(deliveryTime)}`;
+            document.getElementById('order-text').value = completeOrderDetails;
+        }
 
-  function placeOrder() {
-      // Make a POST request to Formspree to send the email
-      fetch('https://formspree.io/your-email-address', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ orderDetails: document.getElementById('order-text').value }),
-      })
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-          alert('Order placed successfully!');
-          // You can clear the cart or perform any other actions after a successful order
-      })
-      .catch(error => {
-          console.error('There was a problem with the fetch operation:', error);
-          alert('Failed to place the order. Please try again later.');
-      });
-  }
+        function placeOrder() {
+            // Make a POST request to Formspree to send the email
+            fetch('https://formspree.io/your-email-address', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ orderDetails: document.getElementById('order-text').value }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                alert('Order placed successfully!');
+                // You can clear the cart or perform any other actions after a successful order
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                alert('Failed to place the order. Please try again later.');
+            });
+        }
 
-  function printOrder() {
-      // Your printOrder function here
-  }
+        function printOrder() {
+            // Your printOrder function here
+        }
 
-  // Periodically update the live time display
-  setInterval(() => {
-      document.getElementById('live-time').textContent = `Live Time: ${getCurrentTime()}`;
-  }, 1000);
+        // Periodically update the live time display
+        setInterval(() => {
+            document.getElementById('live-time').textContent = `Live Time: ${getCurrentTime()}`;
+        }, 1000);
 
-  // Function to format delivery time to include AM/PM
-  function formatDeliveryTime(time) {
-      const parts = time.split(':');
-      const hours = parseInt(parts[0]);
-      const minutes = parts[1];
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-      return `${formattedHours}:${minutes} ${ampm}`;
-  }
+        // Function to format delivery time to include AM/PM
+        function formatDeliveryTime(time) {
+            const parts = time.split(':');
+            const hours = parseInt(parts[0]);
+            const minutes = parts[1];
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+            return `${formattedHours}:${minutes} ${ampm}`;
+        }
 
-  // Function to get the current time
-  function getCurrentTime() {
-      const now = new Date();
-      const hours = now.getHours();
-      const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-      return `${formattedHours}:${padZero(minutes)}:${padZero(seconds)} ${ampm}`;
-  }
+        // Function to get the current time
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+            return `${formattedHours}:${padZero(minutes)}:${padZero(seconds)} ${ampm}`;
+        }
 
-  // Function to pad zero for single-digit minutes and seconds
-  function padZero(value) {
-      return value < 10 ? `0${value}` : value;
-  }
+        // Function to pad zero for single-digit minutes and seconds
+        function padZero(value) {
+            return value < 10 ? `0${value}` : value;
+        }
 
-  function setDeliveryTime() {
-      deliveryTime = document.getElementById('delivery-time').value;
-      updateOrderText();
-  }
+        function setDeliveryTime() {
+            deliveryTime = document.getElementById('delivery-time').value;
+            updateOrderText();
+        }
 
-  function clearOrderText() {
-      document.getElementById('order-text').value = '';
-      // Clear the order details array and reset total amount and delivery time
-      orderDetails = [];
-      totalAmount = 0;
-      deliveryTime = '00:00';
-      updateTotalAmount();
-  }
-</script>
+        function clearOrderText() {
+            document.getElementById('order-text').value = '';
+            // Clear the order details array and reset total amount and delivery time
+            orderDetails = [];
+            totalAmount = 0;
+            deliveryTime = '00:00';
+            updateTotalAmount();
+        }
+    </script>
+
+</body>
+</html>
