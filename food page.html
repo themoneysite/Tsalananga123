@@ -173,14 +173,23 @@ button:hover {
     background-color: #452c1d;
     border-color: #341f10; /* Darker border color on hover */
 }
+
     </style>
 </head>
 <body>
 
+
+    <!-- Existing content -->
     <header>
         <h1>Social Bean<img src="Coffee bean.png" alt="Coffee Icon"></h1>
-        <button id="cart-button" onclick="navigateToCart()">View Cart</button>
+        <button id="staff-button" onclick="staffOnlyFunction()">Staff Only</button>    <button id="cart-button" onclick="navigateToCart()">View Cart</button>
     </header>
+    <div id="staff-passcode" style="display: none;">
+        <label for="passcode">Enter Passcode:</label>
+        <input type="password" id="passcode" />
+        <button onclick="checkPasscode()">Submit</button>
+    </div>
+
     </header>
     
 
@@ -194,16 +203,9 @@ button:hover {
             <div>
                 <h3>Espresso</h3>
                 <p></p>
-                <div class="options">
-                    <label>
-                        <input type="checkbox" name="sugar_espresso"> Sugar
-                    </label>
-                    <label>
-                        <input type="checkbox" name="milk_espresso"> Milk
-                    </label>
-                </div>
+
                 <p>Price: R15.00</p>
-                <button onclick="addToCart('Espresso', 15.00, 'sugar_espresso', 'milk_espresso')">Add to Cart</button>
+                <button onclick="addToCart('Espresso', 15.00)">Add to Cart</button>
             </div>
         </div>
         <div class="menu-item" id="cappuccino">
@@ -211,52 +213,102 @@ button:hover {
             <div>
                 <h3>Cappuccino</h3>
                 <p></p>
-                <div class="options">
-                    <label>
-                        <input type="checkbox" name="sugar_cappuccino"> Sugar
-                    </label>
-                    <label>
-                        <input type="checkbox" name="milk_cappuccino"> Milk
-                    </label>
-                </div>
                 <p>Price: R15.00</p>
-                <button onclick="addToCart('Cappuccino', 15.00, 'sugar_cappuccino', 'milk_cappuccino')">Add to Cart</button>
+                <button onclick="addToCart('Cappuccino', 15.00)">Add to Cart</button>
             </div>
         </div>
+        
         <div class="menu-item" id="Americano">
             <img src="americano.png" alt="Americano">
             <div>
                 <h3>Americano</h3>
                 <p></p>
-                <div class="options">
-                    <label>
-                        <input type="checkbox" name="sugar_americano"> Sugar
-                    </label>
-                    <label>
-                        <input type="checkbox" name="milk_americano"> Milk
-                    </label>
-                </div>
                 <p>Price: R15.00</p>
-                <button onclick="addToCart('Americano', 15.00, 'sugar_americano', 'milk_americano')">Add to Cart</button>
+                <button onclick="addToCart('Americano', 15.00)">Add to Cart</button>
             </div>
         </div>
-
-        <div class="menu-item" id="Ice Coffee">
-            <img src="espresso.png" alt="Ice Coffee">
+        
+    
+        <div class="menu-item" id="FlatWhite">
+            <img src="Flat White.png" alt="Flat White">
             <div>
-                <h3>Ice Coffee</h3>
+                <h3>Flat White</h3>
                 <p></p>
-                <div class="options">
-                    <label>
-                        <input type="checkbox" name="sugar_ice coffee"> Sugar
-                    </label>
-                    <label>
-                        <input type="checkbox" name="milk_ice offee"> Milk
-                    </label>
-                </div>
                 <p>Price: R15.00</p>
-                <button onclick="addToCart('Ice Coffee', 15.00, 'sugar_ice coffee', 'milk_ice coffee')">Add to Cart</button>
+                <button onclick="addToCart('Flat White', 15.00)">Add to Cart</button>
             </div>
+        </div>
+        
+        <div class="menu-item" id="RedCappuccino">
+            <img src="Red Cappucino.png" alt="Red Cappuccino">
+            <div>
+                <h3>Red Cappuccino</h3>
+                <p></p>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Red Cappuccino', 15.00)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="menu-item" id="Freezo">
+            <img src="coffee freezo.png" alt="Freezo">
+            <div>
+                <h3>Freezo</h3>
+                <p></p>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Freezo', 15.00)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="menu-item" id="Cortado">
+            <img src="Cortado.png" alt="Cortado">
+            <div>
+                <h3>Cortado</h3>
+                <p></p>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Cortado', 15.00)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="menu-item" id="HotChocolate">
+            <img src="Hot Chocolate.png" alt="Hot Chocolate">
+            <div>
+                <h3>Hot Chocolate</h3>
+                <p></p>          
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Hot Chocolate', 15.00)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="menu-item" id="ChaiLatte">
+            <img src="Chai latte.png" alt="Chai Latte">
+            <div>
+                <h3>Chai Latte</h3>
+                <p></p>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Chai Latte', 15.00)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="menu-item" id="PepsiMax">
+            <img src="Pepsi Max.png" alt="Pepsi Max">
+            <div>
+                <h3>Pepsi Max</h3>
+                <p></p>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Pepsi Max', 15.00)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="menu-item" id="CremeSoda">
+            <img src="Creme Soda.png" alt="Creme Soda">
+            <div>
+                <h3>Creme Soda</h3>
+                <p></p>
+                <p>Price: R15.00</p>
+                <button onclick="addToCart('Creme Soda', 15.00)">Add to Cart</button>
+            </div>
+        </div>
+        
         <!-- Add more items as needed -->
 
     </section>
@@ -282,31 +334,57 @@ button:hover {
     </footer>
 
     <script>
-          // Add this script for the shopping cart button
-          function navigateToCart() {
+        
+         // Existing script
+         function staffOnlyFunction() {
+            document.getElementById('staff-passcode').style.display = 'block';
+        }
+
+        function checkPasscode() {
+            const passcode = document.getElementById('passcode').value;
+
+            // Replace 'your-passcode' with the actual passcode
+            if (passcode === '0101') {
+                // Staff passcode is correct, redirect to another page
+                window.location.href = 'Supplier page.html';
+            } else {
+                alert('Incorrect passcode. Please try again.');
+            }
+        }
+        // Add this script for the shopping cart button
+        function navigateToCart() {
             document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
         }
+    
         let totalAmount = 0;
         let orderDetails = [];
         let deliveryTime = '00:00'; // Default delivery time
-
+    
         function addToCart(itemName, price, sugarCheckbox, milkCheckbox) {
-            const sugar = document.querySelector(`input[name="${sugarCheckbox}"]`).checked ? 'Sugar' : '';
-            const milk = document.querySelector(`input[name="${milkCheckbox}"]`).checked ? 'Milk' : '';
-
+            let sugar = '';
+            let milk = '';
+    
+            if (sugarCheckbox) {
+                sugar = document.querySelector(`input[name="${sugarCheckbox}"]`).checked ? 'Sugar' : '';
+            }
+    
+            if (milkCheckbox) {
+                milk = document.querySelector(`input[name="${milkCheckbox}"]`).checked ? 'Milk' : '';
+            }
+    
             const quantity = 1;
             const itemTotal = price * quantity;
             totalAmount += itemTotal;
-
+    
             const cartItem = document.createElement('div');
             cartItem.className = 'cart-item';
-
+    
             const itemDetails = `${itemName} - ${sugar} ${milk} - R${price.toFixed(2)}`;
             orderDetails.push(itemDetails);
-
+    
             cartItem.innerHTML = `
                 <div>
-                    <strong>${itemName}</strong> - ${sugar} ${milk} - R${price.toFixed(2)}
+                    <strong>${itemName}</strong>${sugar || milk ? ` - ${sugar} ${milk}` : ''} - R${price.toFixed(2)}
                 </div>
                 <div>
                     <button onclick="removeFromCart(this, ${itemTotal}, '${itemDetails}')">Remove</button>
@@ -316,13 +394,13 @@ button:hover {
             updateTotalAmount();
             updateOrderText();
         }
-
+    
         function removeFromCart(button, itemTotal, itemDetails) {
             const cartItem = button.parentElement.parentElement;
             cartItem.remove();
             totalAmount -= itemTotal;
             updateTotalAmount();
-
+    
             // Remove the corresponding item details from the orderDetails array
             const index = orderDetails.indexOf(itemDetails);
             if (index !== -1) {
@@ -330,17 +408,17 @@ button:hover {
                 updateOrderText();
             }
         }
-
+    
         function updateTotalAmount() {
             document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
         }
-
+    
         function updateOrderText() {
             const completeOrderDetails = orderDetails.join('\n') +
                 `\nTotal Amount: R${totalAmount.toFixed(2)}\nScheduled Time: ${formatDeliveryTime(deliveryTime)}`;
             document.getElementById('order-text').value = completeOrderDetails;
         }
-
+    
         function placeOrder() {
             // Make a POST request to Formspree to send the email
             fetch('https://formspree.io/your-email-address', {
@@ -362,16 +440,16 @@ button:hover {
                 alert('Failed to place the order. Please try again later.');
             });
         }
-
+    
         function printOrder() {
             // Your printOrder function here
         }
-
+    
         // Periodically update the live time display
         setInterval(() => {
             document.getElementById('live-time').textContent = `Live Time: ${getCurrentTime()}`;
         }, 1000);
-
+    
         // Function to format delivery time to include AM/PM
         function formatDeliveryTime(time) {
             const parts = time.split(':');
@@ -381,7 +459,7 @@ button:hover {
             const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
             return `${formattedHours}:${minutes} ${ampm}`;
         }
-
+    
         // Function to get the current time
         function getCurrentTime() {
             const now = new Date();
@@ -392,17 +470,17 @@ button:hover {
             const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
             return `${formattedHours}:${padZero(minutes)}:${padZero(seconds)} ${ampm}`;
         }
-
+    
         // Function to pad zero for single-digit minutes and seconds
         function padZero(value) {
             return value < 10 ? `0${value}` : value;
         }
-
+    
         function setDeliveryTime() {
             deliveryTime = document.getElementById('delivery-time').value;
             updateOrderText();
         }
-
+    
         function clearOrderText() {
             document.getElementById('order-text').value = '';
             // Clear the order details array and reset total amount and delivery time
@@ -412,6 +490,7 @@ button:hover {
             updateTotalAmount();
         }
     </script>
+    
 
 </body>
 </html>
