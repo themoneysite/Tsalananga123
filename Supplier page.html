@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Haven</title>
+    <title>Supplies</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -46,6 +46,7 @@
             height: auto;
             margin-bottom: 1em;
         }
+  
 
         #cart {
             width: 100%;
@@ -86,14 +87,89 @@
             text-align: center;
             padding: 1em;
         }
+        .back-button-container {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            background-color: #795548; /* Dark brown background */
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #5d4037; /* Darker brown on hover */
+        }
+        .add-to-cart-button {
+            background-color: #795548; /* Dark brown background */
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .add-to-cart-button:hover {
+            background-color: #5d4037; /* Darker brown on hover */
+        }
+        .send-order-button {
+            background-color: #9c6050; /* Green background */
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .send-order-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        #cart-button {
+    background-color: #56382a;
+    color: #fff;
+    padding: 10px 20px;
+    border: 2px solid #452c1d; /* Darker border color */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    top: 140px;
+    right: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#cart-button:hover {
+    background-color: #452c1d;
+    border-color: #341f10; /* Darker border color on hover */
+}
+
     </style>
 </head>
 
 <body>
+    
     <header>
-        <h1>Coffee Haven</h1>
+        <h1>Supplies</h1>
     </header>
-
+    <div class="back-button-container"> 
+        <a href="Customer page.html" class="back-button">Back</a> <!-- Replace "Customer page.html" with the actual URL of the other page -->
+    </div><button id="cart-button" onclick="navigateToCart()">View Cart</button>
     <main>
         <section>
             <div class="product">
@@ -101,7 +177,8 @@
                 <h2>Ice</h2>
                 <p>2Liter.</p>
                 <p>Price: R20.00</p>
-                <button onclick="addToCart('Ice', 20.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Ice', 20.00)">Add to Cart</button>
+            </div>
             </div>
 
             <div class="product">
@@ -109,84 +186,96 @@
                 <h2>Milk</h2>
                 <p>500ml</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Milk', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Milk', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Straws.png" alt="Straws">
                 <h2>Straws</h2>
                 <p>240 straws</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Straws', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Straws', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="sugar.png" alt="Sugar">
                 <h2>Sugar</h2>
                 <p>500g</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Sugar', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Sugar', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Cups and lids.png" alt="Cups&Lids">
                 <h2>Cups&Lids</h2>
                 <p>500ml</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Cups&Lids', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Cups&Lids', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Chai Latte powder.png" alt="Chai Latte Powder">
                 <h2>Chai Latte Powder</h2>
                 <p>500ml</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Chai Latte Powder', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Chai Latte Powder', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Red Espresso.png" alt="Red Espresso">
                 <h2>Red Espresso</h2>
                 <p>500ml</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Red Espresso', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Red Espresso', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Freezo Powder.png" alt="Freezo Powder">
                 <h2>Freezo Powder</h2>
                 <p>500ml</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Freezo Powder', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Freezo Powder', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Creme Soda.png" alt="Creme Soda ">
                 <h2>Creme Soda</h2>
                 <p>500ml</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Creme Soda', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Creme Soda', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Pepsi Max.png" alt="Pepsi Max">
                 <h2>Pepsi Max</h2>
                 <p>500ml</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Pepsi', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Pepsi Max', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Stirrers Sticks.png" alt="Stirrers stick">
                 <h2>Stirrers stick</h2>
                 <p>50 sticks</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Stirrers stick', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Stirrers Sticks', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Sweetner.png" alt="Sweetner">
                 <h2>Sweetner</h2>
                 <p>50 sticks</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Sweetner', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Sweetner', 20.00)">Add to Cart</button>
+            </div>
             </div>
             <div class="product">
                 <img src="Honey.png" alt="Honey">
                 <h2>Honey</h2>
                 <p>50 sticks</p>
                 <p>Price: R25.00</p>
-                <button onclick="addToCart('Honey', 25.00)">Add to Cart</button>
+                <button class="add-to-cart-button" onclick="addToCart('Honey', 20.00)">Add to Cart</button>
+            </div>
             </div>
         </section>
     </main>
@@ -196,13 +285,24 @@
         <ul id="cart-items"></ul>
         <p>Total: R<span id="total">0.00</span></p>
     </div>
+ 
 
     <textarea id="additional-notes" placeholder="Additional Notes"></textarea>
-
+   <div class="send-order-button-container">
+        <button class="send-order-button" onclick="sendOrder()">Send Order</button>
+    </div>
     <footer>
         <p>&copy; 2024 Coffee Haven. All rights reserved.</p>
     </footer>
     <script>
+        // Add this script for the shopping cart button
+        function navigateToCart() {
+            document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+        }
+        function sendOrder() {
+            // Implement your logic to send the order
+            alert('Order sent!'); // Example: Displaying an alert for demonstration purposes
+        }
         let cartItems = [];
         let total = 0;
 
