@@ -321,7 +321,7 @@ button:hover {
             <label for="delivery-time">Receive Time:</label>
 
             <input type="time" id="delivery-time" name="delivery-time" value="00:00">
-            <button onclick="setDeliveryTime()">Set</button>
+           
         </div>
        
         <textarea id="order-text" placeholder="Your order details will appear here"></textarea>
@@ -489,11 +489,14 @@ function staffOnlyFunction() {
             return value < 10 ? `0${value}` : value;
         }
     
-        function setDeliveryTime() {
-            deliveryTime = document.getElementById('delivery-time').value;
-            updateOrderText();
-        }
-    
+        document.getElementById('delivery-time').addEventListener('change', function() {
+        setDeliveryTime();
+    });
+
+    function setDeliveryTime() {
+        deliveryTime = document.getElementById('delivery-time').value;
+        updateOrderText();
+    }
         function clearOrderText() {
             document.getElementById('order-text').value = '';
             // Clear the order details array and reset total amount and delivery time
