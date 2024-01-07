@@ -173,13 +173,7 @@ button:hover {
     background-color: #452c1d;
     border-color: #341f10; /* Darker border color on hover */
 }
-#staff-passcode {
-        position: absolute;
-        top: 50%;
-        left: 25%;
-        transform: translate(-50%, -50%);
-        display: none; /* Initially hide the passcode section */
-    }
+
     </style>
 </head>
 <body>
@@ -193,7 +187,7 @@ button:hover {
     <div id="staff-passcode" style="display: none;">
         <label for="passcode">Enter Passcode:</label>
         <input type="password" id="passcode" />
-        <button onclick="checkPasscode()">Submit</button>
+       
     </div>
 
     </header>
@@ -341,22 +335,27 @@ button:hover {
 
     <script>
         
-         // Existing script
-         function staffOnlyFunction() {
-            document.getElementById('staff-passcode').style.display = 'block';
-        }
-
-        function checkPasscode() {
-            const passcode = document.getElementById('passcode').value;
-
-            // Replace 'your-passcode' with the actual passcode
-            if (passcode === '0101') {
-                // Staff passcode is correct, redirect to another page
-                window.location.href = 'Supplier page.html';
-            } else {
-                alert('Incorrect passcode. Please try again.');
+      // Existing script
+    function staffOnlyFunction() {
+        document.getElementById('staff-passcode').style.display = 'block';
+        document.getElementById('passcode').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                checkPasscode();
             }
+        });
+    }
+
+    function checkPasscode() {
+        const passcode = document.getElementById('passcode').value;
+
+        // Replace 'your-passcode' with the actual passcode
+        if (passcode === '0101') {
+            // Staff passcode is correct, redirect to another page
+            window.location.href = 'Supplier page.html';
+        } else {
+            alert('Incorrect passcode. Please try again.');
         }
+    }
         // Add this script for the shopping cart button
         function navigateToCart() {
             document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
